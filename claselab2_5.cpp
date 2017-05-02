@@ -18,6 +18,9 @@ clases de IP:
             www.unicef.com
             mascara de red  :255.255.255.0
             
+ prof carlos atencio
+ catencio64@epiunsa.edu.pe
             
-            
+           Crear 3 redes LAN
+           
            
