@@ -1,0 +1,5 @@
+<?php /*perfil docente*/
+     include("conectar.php");
+     #busqueda=#_POST('Nombre');
+     
+?>
