@@ -8,16 +8,24 @@
 		<link rel="stylesheet" href="estilos.css">
 		<style type="text/css">
 			#caja{
-				background:#B2BABB;
+				background:#CACACA;
 				width:200px;
-				border:1px solit white;
-				margin :auto 80%;
-				padding:0.3em;
-				border-radius:8px;
+				border:1px solid white;
+				margin :auto 83%;
+				padding:0em;
+				border-radius:0px;
+			}
+			#registro{
+				background:#CACACA;
+				width:200px;
+				border:1px solid white;
+				margin :auto 83%;
+				padding:0em;
+				border-radius:0px;
 			}
 			h1,h2,h3,h4{
 				front-family:arial;
-				color:#0080ff;
+				color:#000;
 			}
 		</style>
 	</head>
