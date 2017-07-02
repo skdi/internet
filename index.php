@@ -39,21 +39,11 @@
 			<ul class="nav">
 				<li><a href="docentes">Docentes</a>
 				<ul>
-					<li><a href="Perfil docente">Perfiles docente<?php
-						#include("Docente/perfil_docente.php");		
-					?></a></li>
-					<li><a href="formuladores">Formuladores<?php
-						#include("Docente/formuladores.php");		
-					?></a></li>
-					<li><a href="controladores">Comtroladores<?php
-						#include("Docente/controladores.php");		
-					?></a></li>
-					<li><a href="registro">Registro<?php
-						#include("Docente/registros.php");		
-					?></a></li>
-					<li><a href="seleccion">Seleccion<?php
-						#include("Docente/seleccion.php");		
-					?></a></li>
+					<li><a href="Docente/perfil_docente.php">Perfiles docente</a></li>
+					<li><a href="Docente/lista_formuladores.php">Formuladores</a></li>
+					<li><a href="Docente/lista_controladores.php">Controladores</a></li>
+					<li><a href="Docente/registro.php">Registro</a></li>
+					<li><a href="Docente/seleccion.php">Seleccion</a></li>
 				</ul>
 				</li>
 				<li><a href="personal adimistrativo">Personal Adminitrativo</a>
