@@ -1,7 +1,7 @@
-<html>
+
 Registro<br>
 
-<div class="column">
+<div class="columna" id="registro">
 	<form onsubmit="return false" class="formulario" id="FormRegistro" style="max-width: 300px">
 		<div class="formulario-grupo">
 			<label for="user">Usuario</label><br>
@@ -13,7 +13,14 @@ Registro<br>
 		</div>
 		<input type="submit" name="botonR" value="registro"/>
 	</form>
-
 </div>
-
-</html>
+<style type="text/css">
+			#registro{
+				background:#CACACA;
+				width:200px;
+				border:1px solid white;
+				margin :auto 0%;
+				padding:0em;
+				border-radius:0px;
+			}
+</style>
