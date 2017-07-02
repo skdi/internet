@@ -39,19 +39,19 @@
 				<li><a href="docentes">Docentes</a>
 				<ul>
 					<li><a href="Perfil docente">Perfiles docente<?php
-						#include("perfil_docente.php");		
+						#include("Docente/perfil_docente.php");		
 					?></a></li>
 					<li><a href="formuladores">Formuladores<?php
-						#include("formuladores.php");		
+						#include("Docente/formuladores.php");		
 					?></a></li>
 					<li><a href="controladores">Comtroladores<?php
-						#include("controladores.php");		
+						#include("Docente/controladores.php");		
 					?></a></li>
 					<li><a href="registro">Registro<?php
-						#include("registros.php");		
+						#include("Docente/registros.php");		
 					?></a></li>
 					<li><a href="seleccion">Seleccion<?php
-						#include("seleccion.php");		
+						#include("Docente/seleccion.php");		
 					?></a></li>
 				</ul>
 				</li>
