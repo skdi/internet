@@ -28,10 +28,11 @@
 				color:#000;
 			}
 		</style>
+			<?php include ("login.php");
+	include ("menu.php"); ?>
 	</head>
 	<body>
-	<?php include ("login.php");
-	include ("menu.php"); ?>
+
 </body>
 
 </html>	

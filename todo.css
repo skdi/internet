@@ -1,0 +1,21 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+body{
+	background-image:url(imj/unsa-compressor-tarea.jpg);
+	background-size:cover;
+}
+#menu{
+	width:200px;
+	margin-top:50px;
+}
+form#caja{
+		background:#f0f0f0;
+		width:200px;
+		border:1px solit white;
+		margin :200px auto;
+		padding:1em;
+		border-radius:8px;
+}
+

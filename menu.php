@@ -3,11 +3,11 @@
 			<ul class="nav">
 				<li><a href="docentes">Docentes</a>
 				<ul>
-					<li><a href="Docente/perfil_docente.php">Perfiles docente</a></li>
-					<li><a href="Docente/lista_formuladores.php">Formuladores</a></li>
-					<li><a href="Docente/lista_controladores.php">Controladores</a></li>
-					<li><a href="Docente/registro.php">Registro</a></li>
-					<li><a href="Docente/seleccion.php">Seleccion</a></li>
+					<li><a href="Docentes/perfildocentes.php">Perfiles docente</a></li>
+					<li><a href="Docentes/formuladores.php">Formuladores</a></li>
+					<li><a href="Docentes/controladores.php">Controladores</a></li>
+					<li><a href="Docentes/registro.php">Registro</a></li>
+					<li><a href="Docentes/seleccion.php">Seleccion</a></li>
 				</ul>
 				</li>
 				<li><a href="personal adimistrativo">Personal Adminitrativo</a>
