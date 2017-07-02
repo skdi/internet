@@ -6,7 +6,7 @@
 					<li><a href="Docentes/perfildocentes.php">Perfiles docente</a></li>
 					<li><a href="Docentes/formuladores.php">Formuladores</a></li>
 					<li><a href="Docentes/controladores.php">Controladores</a></li>
-					<li><a href="Docentes/registro.php">Registro</a></li>
+					<li><a href="Docentes/registro.html">Registro</a></li>
 					<li><a href="Docentes/seleccion.php">Seleccion</a></li>
 				</ul>
 				</li>
