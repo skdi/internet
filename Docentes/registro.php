@@ -1,77 +1,26 @@
 
-<html>
-	<head>
-		
-		<meta http-equiv="Content-Type" content="text/html"; charset=iso-8859-1>
-		<title>Amin</title>
-		<style type="text/css">
-			#caja{
-				background:#DCC5C5;
-				width:300px;
-				border:1px solit white;
-				margin :300px auto;
-				padding:1em;
-				border-radius:8px;
-			}
-			h1,h2,h3,h4{
-				front-family:arial;
-				color:#0080ff;
-			}
-			body{
-				background-image:url(unsa-compressor-tarea.jpg);
-				background-size:cover;
-				}
-		</style>
+Registro<br>
 
-	</head>
-	<body>
-		<div id="caja">
-		<h1>Registro</h1>
-			<form>
-				<li> Nombre y apellidos</li>
-				<input type="text" name="nombre"  placeholder="Nombre y Apellidos..."/>
-				<li> Nombre de usuario</li>
-				<input type="text" name="pass"  placeholder="Usuario..."/>
-				<li> Password</li>
-				<input type="password" name="pass"  placeholder="Password..."/>
-				<li> Confime password</li>
-				<input type="password" name="pass"  placeholder="Confirme Password..."/>
-				<input type="submit" name="boton" value="siguiente"/>
-				
-			</form>
+<div class="columna" id="registro">
+	<form onsubmit="return false" class="formulario" id="FormRegistro" style="max-width: 300px">
+		<div class="formulario-grupo">
+			<label for="user">Usuario</label><br>
+			<input type="text" name="user" id"user" placeholder="Usuario..."><br>
 		</div>
-<?php
-
-	//CONEXIÓN A LA BASE DE DATOS
-	$hostname_db = "host";
-	$database_db = "nombre";
-	$username_db = "usuario";
-	$password_db = "password";
-	//Conectar a la base de datos
-	$conexion = mysqli_connect($hostname_db, $username_db, $password_db);
-	//Seleccionar la base de datos
-	mysqli_select_db($conexion,$database_db) or die ("Ninguna DB seleccionada");
-	//CONSULTA A LA BASE DE DATOS
-	$accion_reg="SELECT * FROM tabla ";
-	$consulta_reg=mysqli_query($conexion,$accion_reg);
-	$datos_reg=mysqli_fetch_assoc($consulta_reg);
-	//Cantidad de registros
-	$cantidad_reg=mysqli_num_rows($consulta_reg);
-	//#var_dumb(#datos_reg);
-	$array=array($datos_reg["nombre"],$datos_reg["usuario"],$datos_reg["password"],$datos_reg["repassword"]);
-	//Sacar datos con $datos;
-	mysqli_free_result($consulta_reg);
-	include("funciones.php");
-?>
-
-
-
-
-
-
-
-
-
-
-	</body>
-</html>
+		<div>
+			<label for="dni">DNI</label><br>
+			<input type="text" name="dni" id"dni" placeholder="DNI...">
+		</div>
+		<input type="submit" name="botonR" value="registro"/>
+	</form>
+</div>
+<style type="text/css">
+			#registro{
+				background:#CACACA;
+				width:200px;
+				border:1px solid white;
+				margin :auto 0%;
+				padding:0em;
+				border-radius:0px;
+			}
+</style>
