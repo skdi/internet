@@ -28,7 +28,7 @@ $apellido = $_POST['apellido'];
         exit();
     }else {
         echo "Datos ingresados";
-        header("refresh:3; url=ver.php" ); 
+        header("refresh:3; url=verRegistrados.php" ); 
         
     }
 

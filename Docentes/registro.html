@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <?php include("efectos.js");?>
 
     <meta http-equiv="Content-Type" content="text/html" ; charset=UTF-8>
     <title>Registro</title>
@@ -47,7 +48,7 @@
                 <label for="error"></label><br>
                 <input type="hidden" name="error" id="error">
             </div>
-            <input type="submit" name="botonR" value="registro" onclick="registro(user.value,NombresApellidos.value,password.value,error.value);" />
+            <input type="submit" name="botonR" value="registro" onclick="register(dni.value,nombre.value,apellido.value);" />
         </form>
 
 
