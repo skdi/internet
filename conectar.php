@@ -9,7 +9,7 @@ function conectar(){
     //coneccion a la base de datos
     #conexion=mysql_connect(#server,#usuario,#pass) or die("error al conectar bd".mysql_error());
     //seleccion de la base de datos
-    mysql_select_db(#database,#conexion);
+    mysql_select_db(#database,#conexion) or die("problema con la bd seleccionada");
     return #conexion;
     /*modo de uso!!!!!!
      * <?php 
