@@ -3,7 +3,7 @@
 	<head>
 		<meta name="viewport" content="width-device-width,use-scalable-no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
 
-		<title>menu desplegable horizontal</title>
+		<title>Pagina del postulante</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="estilos.css">
 		<style type="text/css">
