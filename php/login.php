@@ -10,8 +10,8 @@ class login{
 		$this->conx= new mysqli($this->hostname_db,$this->username_db,$this->password_db,$this->database_db);
 	}
  
-	public function login($root, $){
-		$login= $this->conx->query("SELECT * FROM  usuarios  WHERE nombre='".$root."' AND clavee='".$."' ");
+	public function login($root, $clave){
+		$login= $this->conx->query("SELECT * FROM  usuarios  WHERE nombre='".$root."' AND clave='".$clave."' ");
 		return $login;
 	}
 }
