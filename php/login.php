@@ -1,4 +1,4 @@
-<?
+<?php
 class login{
 	private $username_db='root';
 	private $password_db='';
