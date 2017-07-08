@@ -9,7 +9,7 @@ class conectar
 	private $database_db="internetdatabase";
 	private $username_db="root";
 	private $password_db="";
-    public function conectar(){	
+    public function __construct(){	
     	//Conectar a la base de datos
         $this->conexion = mysqli_connect($hostname_db, $username_db, $password_db,$database_db) 
         or die("no se ha podido conectar con MySQL: " .mysqli_connect_error());
