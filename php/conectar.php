@@ -11,11 +11,12 @@ class conectar
 	private $password_db="";
     public function Conectar(){	
     	//Conectar a la base de datos
-        $this->conexion = mysql_connect($hostname_db, $username_db, $password_db) 
-        or die("no se ha podido conectar con MySQL: " . mysql_error());
+        $this->conexion = mysqli_connect($hostname_db, $username_db, $password_db,$database_db) 
+        or die("no se ha podido conectar con MySQL: " .mysqli_connect_error());
         //Seleccionar la base de datos
         $this->db = mysqli_select_db($conexion,$database_db) or die ("Ninguna DB seleccionada");
-        echo "conexion establecida ";
+	    if(conexion && db)
+        	echo "conexion establecida ";
         return true;
 
     }
