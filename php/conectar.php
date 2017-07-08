@@ -24,7 +24,7 @@ class conectar
     public function desconectar()
     {
         if ($this->conectar->conexion) {
-            mysql_close($this->$conexion);
+            mysqli_close($this->$conexion);
         }
 
     }
@@ -32,12 +32,12 @@ class conectar
     public function pruebadb($table)
     {
         $tabla = $table;
-        $query = mysql_query("SELECT * from $tabla ", $this->conexion);
+        $query = mysqli_query("SELECT * from $tabla ", $this->conexion);
         if (!$query ) echo "Error en la tabla seleccionada";
         else {
             $nregistrostotal = mysql_result($query, 0, 0);
             echo "Hay $nregistrostotal registros en la tabla: $tabla.";
-            mysql_free_result($query);
+            mysqli_free_result($query);
         }
     }
 }
