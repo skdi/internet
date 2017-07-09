@@ -13,8 +13,8 @@ class conectar
         $this->conexion = mysqli_connect($this->hostname_db, $this->username_db, $this->password_db,$this->database_db) 
         or die("no se ha podido conectar con MySQL: " .mysqli_connect_error());
         //Seleccionar la base de datos
-        $this->db = mysqli_select_db($conexion,$database_db) or die ("Ninguna DB seleccionada");
-        if(conexion && db)
+        $this->db = mysqli_select_db($this->conexion,$this->database_db) or die ("Ninguna DB seleccionada");
+        if(this->conexion && this->db)
             echo "conexion establecida ";
         return true;
     }
@@ -35,10 +35,5 @@ class conectar
         $tabla = $table;
         $query = mysqli_query("SELECT * from $tabla ", $this->conexion);
         if (!$query ) echo "Error en la tabla seleccionada";
-        else {
-            $nregistrostotal = mysql_result($query, 0, 0);
-            echo "Hay $nregistrostotal registros en la tabla: $tabla.";
-            mysqli_free_result($query);
-        }
     }
 }
