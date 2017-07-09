@@ -2,8 +2,8 @@
 <?php
 class conectar
 {
-    private $conexion;
-    private $db;
+    public $conexion;
+    public $db;
     private $hostname_db="localhost";
     private $database_db="internetdatabase";
     private $username_db="root";
