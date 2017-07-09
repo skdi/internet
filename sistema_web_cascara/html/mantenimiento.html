@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="btn-group">
+<div class="alert alert-info">
+	Solo necesita llenar los atributos que quiera editar ademas de nombre y apellido.
+</div>
+<form action="php/modifica.php" class="navbar-form " method="POST" role="form">
+  <label for="nombre">nombre</label><br>
+  <input type="text" name="nombre" class="form-control" placeholder="nombre..." required="">
+  <label for="apellido">apellido</label><br>
+  <input type="text" name="apellido" class="form-control" placeholder="apellido..." required="">
+  <label for="cargo">cargo</label><br>
+  <input type="text" name="cargo" class="form-control" placeholder="cargo...">
+  <label for="regimen">regimen</label><br>
+  <input type="text" name="regimen" class="form-control" placeholder="regimen...">
+  <label for="facultad">facultad</label><br>
+  <input type="text" name="facultad" class="form-control" placeholder="facultad...">
+  <label for="categoria">categoria</label><br>
+  <input type="text" name="categoria" class="form-control" placeholder="categoria...">
+  <label for="dependencia">dependencia</label><br>
+  <input type="text" name="dependencia" class="form-control" placeholder="dependencia...">
+  <button type="submit" class="btn btn-info">Cambiar datos</button>
+</form>
+
+</div>
+</body>
