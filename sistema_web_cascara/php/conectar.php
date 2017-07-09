@@ -10,7 +10,7 @@ class conectar
     private $password_db="";
     public function __construct(){  
         //Conectar a la base de datos
-        $this->conexion = mysqli_connect($hostname_db, $username_db, $password_db,$database_db) 
+        $this->conexion = mysqli_connect($this->hostname_db, $this->username_db, $this->password_db,$this->database_db) 
         or die("no se ha podido conectar con MySQL: " .mysqli_connect_error());
         //Seleccionar la base de datos
         $this->db = mysqli_select_db($conexion,$database_db) or die ("Ninguna DB seleccionada");
