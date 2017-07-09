@@ -2,8 +2,8 @@
 <?php
 class conectar
 {
-    protected $conexion;
-    protected $db;
+    private $conexion;
+    private $db;
     private $hostname_db="localhost";
     private $database_db="internetdatabase";
     private $username_db="root";
@@ -17,6 +17,12 @@ class conectar
         if(conexion && db)
             echo "conexion establecida ";
         return true;
+    }
+    public function getconexion(){
+        return $this->conexion;
+    }
+    public function getdb(){
+        return $this->db;
     }
     public function desconectar()
     {
