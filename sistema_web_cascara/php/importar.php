@@ -26,15 +26,15 @@ class Importar(){
          leyendo hasta que encuentre un ; */
          $docente = explode(";",$linea);
          //Almacenamos los docente que vamos leyendo en una variable
-         $dni=trim($docente[0]);
-         $apellidos=trim($docente[1]);
-         $nombre = trim($docente[2]);
-         $facultad =trim($docente[3]);
-         $telefono = trim($docente[4]);
-         $correo = trim($docente[5]);
-         $categoria = trim($docente[6]);
-         $regimen = trim($docente[7]);
-         $cargo= trim($docente[8]);   
+         $dni=trim($docente[1]);
+         $apellidos=trim($docente[2]);
+         $nombre = trim($docente[3]);
+         $facultad =trim($docente[4]);
+         $telefono = trim($docente[5]);
+         $correo = trim($docente[6]);
+         $categoria = trim($docente[7]);
+         $regimen = trim($docente[8]);
+         $cargo= trim($docente[9]);   
          //guardamos en base de docente la línea leida
          mysql_query("INSERT INTO docente(nombre,edad,profesion) 
           VALUES('$dni,'$apellidos','$nombre','$facultad','$telefono','$correo','$categoria','$regimen','$cargo')");   
@@ -55,14 +55,14 @@ private function importarAdministrativos(){
      if($i != 0) 
      { 
          $administrativos = explode(";",$linea);
-         $dni=trim($administrativos[0]);
-         $apellidos=trim($administrativos[1]);
-         $nombre = trim($administrativos[2]);
-         $dependencia =trim($administrativos[3]);
-         $telefono = trim($administrativos[4]);
-         $correo = trim($administrativos[5]);
-         $categoria = trim($administrativos[6]);
-         $cargo= trim($administrativos[7]);   
+         $dni=trim($administrativos[1]);
+         $apellidos=trim($administrativos[2]);
+         $nombre = trim($administrativos[3]);
+         $dependencia =trim($administrativos[4]);
+         $telefono = trim($administrativos[5]);
+         $correo = trim($administrativos[6]);
+         $categoria = trim($administrativos[7]);
+         $cargo= trim($administrativos[8]);   
          mysql_query("INSERT INTO administrativos(nombre,edad,profesion) 
           VALUES('$dni,'$apellidos','$nombre','$dependencia','$telefono','$correo','$categoria','$cargo')");
      }   
