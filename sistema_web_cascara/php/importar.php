@@ -1,15 +1,16 @@
-<?php/*
-<form action="importar.php" enctype="multipart/form-data" method="post">
-   <input id="archivo" accept=".csv" name="archivo" type="file" /> 
-   <input name="MAX_FILE_SIZE" type="hidden" value="20000" /> 
-   <input name="enviar" type="submit" value="Importar" />
-</form>*/
+<?php
 class Importar(){
   private $archivo="datos.csv";
-  public function importarDocentes($archivo=$this->archivo){
+  public function importar($tipo){
+    if($tipo='A')
+      importarAdministrativos();
+    else if($tipo='D')
+      importarDocentes();
+  }
+  private function importarDocentes(){
   //obtenemos el archivo .csv
   //cargamos el archivo
-  $lineas = file($archivo);   
+  $lineas = file($this->archivo);   
   //inicializamos variable a 0, esto nos ayudará a indicarle que no lea la primera línea
   $i=0;   
   //Recorremos el bucle para leer línea por línea
@@ -45,9 +46,9 @@ class Importar(){
      //cerramos bucle
   }
 }
-public function importarAdministrativos($archivo=$this->archivo){
+private function importarAdministrativos(){
   //obtenemos el archivo .csv
-  $lineas = file($archivo);   
+  $lineas = file($this->archivo);   
   $i=0;   
   foreach ($lineas as $linea_num => $linea)
   { 
