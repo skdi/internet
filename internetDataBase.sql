@@ -79,26 +79,26 @@ CREATE TABLE Tipo_Participante (
 ALTER TABLE participantes_procesos ADD CONSTRAINT procesos_participantes_procesos_fk
 FOREIGN KEY (proceso_id)
 REFERENCES procesos (id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
+ON DELETE CASCADE
+ON UPDATE CASCADE;
 
 ALTER TABLE pregunta ADD CONSTRAINT procesos_preguntas_fk
 FOREIGN KEY (id)
 REFERENCES procesos (id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
+ON DELETE CASCADE
+ON UPDATE CASCADE;
 
 ALTER TABLE proceso_pregunta ADD CONSTRAINT procesos_proceso_pregunta_fk
 FOREIGN KEY (id)
 REFERENCES procesos (id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
+ON DELETE CASCADE
+ON UPDATE CASCADE;
 
 ALTER TABLE participantes ADD CONSTRAINT participantes_procesos_participantes_fk
 FOREIGN KEY (id)
 REFERENCES participantes_procesos (id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
+ON DELETE CASCADE
+ON UPDATE CASCADE;
 
 /*
 Warning: Relationship has no columns to map:
@@ -106,8 +106,8 @@ Warning: Relationship has no columns to map:
 ALTER TABLE Tipo_Participante ADD CONSTRAINT participantes_tipo_participante_fk
 FOREIGN KEY ()
 REFERENCES participantes ()
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
+ON DELETE CASCADE
+ON UPDATE CASCADE;
 
 /*
 Warning: Relationship has no columns to map:
@@ -115,8 +115,8 @@ Warning: Relationship has no columns to map:
 ALTER TABLE proceso_pregunta ADD CONSTRAINT participantes_proceso_pregunta_fk
 FOREIGN KEY ()
 REFERENCES participantes ()
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
+ON DELETE CASCADE
+ON UPDATE CASCADE;
 
 /*
 Warning: Relationship has no columns to map:
@@ -124,14 +124,14 @@ Warning: Relationship has no columns to map:
 ALTER TABLE area ADD CONSTRAINT proceso_pregunta_area_fk
 FOREIGN KEY ()
 REFERENCES proceso_pregunta ()
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
+ON DELETE CASCADE
+ON UPDATE CASCADE;
 
 ALTER TABLE pregunta ADD CONSTRAINT proceso_pregunta_pregunta_fk
 FOREIGN KEY (id)
 REFERENCES proceso_pregunta (id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
+ON DELETE CASCADE
+ON UPDATE CASCADE;
 
 /*
 Warning: Relationship has no columns to map:
