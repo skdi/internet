@@ -47,7 +47,7 @@ class Importar(){
   }
 }
 
-public function importar($archivo=$this->archivo){
+public function importarAdministrativos($archivo=$this->archivo){
   //obtenemos el archivo .csv
   $lineas = file($archivo);   
   $i=0;   
