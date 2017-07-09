@@ -1,6 +1,9 @@
 <?php
 class Importar(){
   private $archivo="datos.csv";
+    public set_archivo($archivo){
+    $this->archivo=$archivo;
+  }
   public function importar($tipo){
     if($tipo='A')
       importarAdministrativos();
