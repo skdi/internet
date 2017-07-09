@@ -100,7 +100,7 @@
             <div class="pagina-contenido">
                 <!-- Contenido -->
                 <div class="contenido">
-                    <center><h1>MANTENIMIENTO</h1></center>
+                    <h1 class="titulo-pagina">MANTENIMIENTO</h1>
                     <br><br><br><br>
                     <div class="row" id="m_tabla">
                             <div class="col-sm-3 col-md-3">
