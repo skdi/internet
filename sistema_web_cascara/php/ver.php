@@ -1,6 +1,6 @@
                         <?php
-						$nombre = $_POST['nombre'];
-						$apellido = $_POST['apellido'];
+			$nombre = $_POST['nombre'];
+			$apellido = $_POST['apellido'];
 
                         require_once("conect.php");
                             $peticion_usuario = mysqli_query($con,"SELECT * FROM docente WHERE nombre='$nombre' ");
@@ -14,10 +14,16 @@
                         echo "</tr>";  
 
                         $row = mysqli_fetch_row($peticion_usuario); 
-                            echo "<tr>";  
-                            echo "<td>$row[1]</td>"; 
-                            echo "<td>$row[2]</td>"; 
-                            echo "<td>$row[3]</td>";
+                         echo "<tr>";  
+                         echo "<td>$row[1]</td>"; 
+                         echo "<td>$row[2]</td>"; 
+                         echo "<td>$row[3]</td>";
+			 echo "<td>$row[4]</td>";
+			 echo "<td>$row[5]</td>";
+			 echo "<td>$row[6]</td>";
+			 echo "<td>$row[7]</td>";
+			 echo "<td>$row[8]</td>";
+			 echo "<td>$row[9]</td>";
                             echo "</tr>";   
                         echo "</table>";  
 
