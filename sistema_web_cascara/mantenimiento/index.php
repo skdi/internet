@@ -41,9 +41,9 @@
                    
                     <div class="detalles-usuario">
                         <div class="text-center">
-                            <img src="../img/admin.jpg" alt="" class="img-circle">
+                            <img src="img/admin.jpg" alt="" class="img-circle">
                         </div>
-                        <div class="info-usuario">
+                        <div class="info-usuario">  
                             <div class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">ADMINISTRADOR</a>
                                 <ul class="dropdown-menu">
@@ -77,12 +77,14 @@
                             <li>
                                 <a href="#"><span> SELECCIONAR PROCESO </span></a>
                             </li>
+                            <li class="divider"> </li>
                             <li>
                                 <a href="#"><span> IMPORTAR DATOS </span></a>
                             </li>
                             <li>
                                 <a href="#"><span> EXPORTAR SELECCION</span></a>
                             </li>
+                            <li class="divider"></li>
                             <li>
                                 <a href="../"><span> SALIR </span></a>
                             </li>

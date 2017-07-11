@@ -2,8 +2,7 @@
 session_start();
 
 require_once("..\..\clases/conexion/conexion.php");
-    $conx=new Conectar();
-    $con=$conx->conexion;
+    $con=$conexion;
 
 
 ?>
@@ -17,15 +16,14 @@ require_once("..\..\clases/conexion/conexion.php");
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="css/icons.css" rel="stylesheet" type="text/css">
-        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <link href="estilo.css" rel="stylesheet" type="text/css">
         
     </head>
 
 
     <body class="fixed-left">
 
-        <!-- COMIENZO DE PAGINA -->
+              <!-- COMIENZO DE PAGINA -->
         <div id="envoltura">
 
             <!-- COMIENZO DE BARRA TOP -->
@@ -49,7 +47,7 @@ require_once("..\..\clases/conexion/conexion.php");
                    
                     <div class="detalles-usuario">
                         <div class="text-center">
-                            <img src="img/admin.jpg" alt="" class="img-circle">
+                            <img src="../img/admin.jpg" alt="" class="img-circle">
                         </div>
                         <div class="info-usuario">
                             <div class="dropdown">
@@ -68,13 +66,13 @@ require_once("..\..\clases/conexion/conexion.php");
                     <!--- DIVISOR -->
 
 
-                    <div id="menu-barra">
+                    <div id="menu-barra" >
                         <ul>
                             <li>
                                 <a href="index.html" ><span> INICIO </span></a>
                             </li>
-                            <li>
-                                <a href="mantenimiento/"><span> MANTENIMIENTO </span></a>
+                            <li class="activo" >
+                                <a href="mantenimiento/" ><span> MANTENIMIENTO </span></a>
                             </li>
                             <li>
                                 <a href="#"><span> CREAR PREGUNTA </span></a>
@@ -103,69 +101,62 @@ require_once("..\..\clases/conexion/conexion.php");
             </div>
             <!-- MENU IZQUIERDA -->
 
+
             <!-- CONTENIDO AQUI -->
 
             <div class="pagina-contenido">
                 <!-- Contenido -->
+               
                 <div class="contenido">
-
-                    <div class="">
-                        <div class="cabecera-titulo">
-                            <h3 class="titulo-pagina">LISTADO DE ADMINISTRATIVOS</h3>
+                      
+                    <div class="cabecera-titulo">
+                            <h1>LISTADO DE ADMINISTRATIVOS</h1>
                         </div>
-                    </div>
+                </div><!-- contenedor -->
+        <div class="container">
+              
+            
+            <div class="row" id="m_tabla" >
+                            <div class="col-sm-1 col md-1"></div>
 
-                    <div class="page-content-wrapper ">
-
-                        <section>
-                        <div class="row" id="m_tabla" >
                             <div class="col-sm-3 col-md-3">
                                     <a href="../crear_alumno.php" class="btn">
-                            	       <strong><i class="icon-user"></i> Ingresar Nuevo Administrativo</strong>
+                            	       <strong><i class="icon-user"></i><strong>Ingresar Nuevo Administrativo </strong> </strong>
                                     </a>
                                 </div>
                             <div class="col-sm-3 col-md-3">
                              <div class="btn-group">
-                        
-                                <button class="btn" data-toggle="dropdown" id="boton">
+                                <button class="btn btn-primary" data-toggle="dropdown" id="boton">
                             	   <strong>Filtrar por cargo</strong> <span class="caret"></span>
                                 </button>
                                     <ul class="dropdown-menu" id="filtro">
-                                    <?php
+                                        <?php
 									       $query=mysqli_query($con,"SELECT * FROM tipo_participante WHERE tipo='admin' ");
 									       while($d=mysqli_fetch_array($query)){
                                                     echo '<li><a href="index.php?cargo='.$d['cargo'].'">'.$d['cargo'].'</a></li>';	
-								           	}
-							         ?>
-                                    <li class="divider"></li>
-                                    <li><a href="index.php?cargo=todos">Todos</a></li>
-                                </ul>
-                        </div> 
-                                </div>
-                        <div class="col-sm-2 col-md-2">
-                                  
-                                </div>
-                
-                        <div class="col-sm-4 col-md-4">
-                            <form name="form1" method="post" action="">
-                              <div class="input-group">
-                              
-                             </div>
-                            </form>
-                        </div>
-                        
-                        
-                          
+                                            }
+                                        ?>
+                                        <li class="divider"></li>
+                                        <li><a href="index.php?cargo=todos">Todos</a></li>
+                                    </ul>
+                                </div> 
                             </div>
-                        </section>
-                    </div>
                             
-    
-                        
-                    </div><!-- contenedor -->
-                    <div class="container">
-                         <h3>Administrativos</h3>         
-                    <table class="table">
+                            <div class="col-sm-4 col-md-4">
+                            <form name="form1" method="post" action="index.php">
+                              <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Buscar por Nombres / Apellidos / DNI" aria-describedby="basic-addon2">
+                                    <span class="input-group-addon" id="basic-addon2">Buscar</span>
+                              </div>
+                                <div class="col-sm-1 col md-1"></div>
+                            </form>
+                            </div>
+                
+        
+        </div>
+        <div class="row" id="tabla_ad">
+                   <br>
+                    <table class="table table-striped">
                     <thead>
                     <tr>
                         <th>Dni</th>
@@ -185,8 +176,8 @@ require_once("..\..\clases/conexion/conexion.php");
                        if(empty($_GET['cargo'])){
 					   if(empty($_POST['bus']))
                        {
-						  $sql="SELECT * FROM participante ORDER BY apellido";
-					       }else{
+						  $sql="SELECT * FROM participante ORDER BY apellidos";
+					   }else{
 						      $bus=$_POST['bus'];
 						      $sql="SELECT * FROM participante WHERE nombre LIKE '$bus%' or apellidos LIKE '$bus%' or dni='$bus' ORDER BY apellidos";
 					       }
@@ -197,30 +188,40 @@ require_once("..\..\clases/conexion/conexion.php");
 					       if($bus<>"todos"){
 						          $sql="SELECT * FROM participante WHERE cargo='$bus' ORDER BY apellidos";
 					           }
-                        else{
+                           else{
 						          $sql="SELECT * FROM participante ORDER BY apellidos";
 					           }
 				        
                         }
-                        $query=mysqli_query($con,$sql);
+                       
+                       $query=mysqli_query($con,$sql);
+
+
+                        
                         while($d=mysqli_fetch_array($query))
-                        {
+                            {
                              echo '<tr><td>'.$d['dni'].'</td><td>'.$d['apellidos'].'</td><td>'.$d['nombre'].'</td><td>'.$d['dependencia'].'</td><td>'.$d['telefono'].'</td><td>'.$d['correo'].'</td><td>'.$d['cargo'].'</td><td>BOTONactulizar</td><td>BOTONELIMINAR</td>';	
-                        }
+                            }
+                       
+                       
                         ?>
 
                     
                 </tbody>
                 </table>
+                <?php
+                 if(!$d=mysqli_fetch_array($query))
+                 {
+                     echo '<div class="alert alert-info" align="center"><strong>No hay Administrativos Registrados</strong></div>' ;
+                     
+                 }
+                ?>
                 </div>
                 <br><br><br>
                     </div> <!-- pagina contenido -->
             </div> 
               
 
-                <footer class="footer">
-                     © 2017 UNIVERSIDAD NACIONAL DE SAN AGUSTIN
-                </footer>
 
 
             <!-- Fin del contenido de la pagina-->
