@@ -1,1 +1,8 @@
 andre:cambie el footer por CS-UNSA
+franco: -añadi un css para la carpeta mantenimiento/administrativo para el index de la carpeta 
+        -cree una clase administrativos dentro de administrativos/clases
+        -añadi archivos crear_ad.php interfaz que sera llamada por el index de la carpeta administrador
+                        actualizar_ad.php interfaz para actualizar
+                        eliminar_ad.php interfaz para eliminar administrativo
+                        
+         Dentro de la carpeta de administrativo el archivo css mejoro como se ve los registros
