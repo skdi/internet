@@ -171,16 +171,15 @@ a:focus {
   height: 50px !important;
   line-height: 1.5;
 }
-#menu-barra > ul > li > a:hover {
-  background-color: #1b1f22;
-  text-decoration: none;
-  color: #ffffff;
+#menu-barra > ul > li > a:hover 
+{
+  color: black;
+  background-color: #ffffff
 }
-
-
-#menu-barra > ul > li > a.active {
-  color: #ffffff;
-  background-color: #1b1f22;
+#menu-barra .activado > a {
+    
+  color: black;
+  background-color: #ffffff
 }
 
 .detalles-usuario {
