@@ -172,13 +172,13 @@ a:focus {
 
 #menu-barra > ul > li > a:hover 
 {
-  background-color: #1b1f22;
-  text-decoration:none;
-  color: #ffffff;
+  color: black;
+  background-color: #ffffff
 }
-#menu-barra > ul > li > a:activo {
-  color: #ffffff;
-  background-color: #ffffff;
+#menu-barra .activado > a {
+    
+  color: black;
+  background-color: #ffffff
 }
 
 /* CSS PARA TABLA */
