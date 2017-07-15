@@ -45,7 +45,8 @@
                         </div>
                         <div class="info-usuario">  
                             <div class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">ADMINISTRADOR</a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">ADMINISTRADOR <span class="glyphicon glyphicon-menu-down"></span></a>
+                               
                                 <ul class="dropdown-menu">
                                     <li><a href=""> Perfil</a></li>
                                     <li><a href=""> Configuracion   </a></li>
@@ -65,7 +66,7 @@
                             <li>
                                 <a href="../admin.html" ><span> INICIO </span></a>
                             </li>
-                            <li>
+                            <li class="activado">
                                 <a href="#"><span> MANTENIMIENTO </span></a>
                             </li>
                             <li>
@@ -95,6 +96,7 @@
                     <div class="clearfix"></div>
                 </div> <!-- MENU INTERIOR -->
             </div>
+        </div>
             <!-- MENU IZQUIERDA -->
 
             <!-- CONTENIDO AQUI -->
@@ -102,46 +104,42 @@
             <div class="pagina-contenido">
                 <!-- Contenido -->
                 <div class="contenido">
-                    <h1 class="titulo-pagina">MANTENIMIENTO</h1>
-                    <br><br><br><br>
-                    <div class="row" id="m_tabla">
-                            <div class="col-sm-3 col-md-3">
+                    <div class="container">
+                    <center> <h1 class="titulo-pagina">MANTENIMIENTO</h1> </center>
+                    </div>
+                    
+                    <br>
+                    <div class="container">
+                        <div class="row" id="m_tabla">
+                            <div class="col-sm-4 col-md-4">
                                     <a href="administrativos/" class="thumbnail">
-                                        <h3>ADMINISTRATIVOS</h3>
-                                        <img src="img/admin.jpg" alt="..." class="img-rounded">
+                                        <center><h3>ADMINISTRATIVOS</h3>     </center>
+                                        <img src="img/administrativo.jpg" alt="..." class="img-rounded">
                                         
                                     </a>
                                 </div>
-                         <div class="col-sm-3 col-md-3">
+                         <div class="col-sm-4 col-md-4">
                                     <a href="docentes/" class="thumbnail">
-                                        <h3>DOCENTES</h3>
-                                        <img src="img/admin.jpg" alt="..." class="img-rounded">
+                                        <center><h3>DOCENTES</h3>     </center>
+                                        <img src="img/docente1.jpg" alt="..." class="img-rounded">
                                         
                                     </a>
                                 </div>
-                        <div class="col-sm-3 col-md-3">
-                                    <a href="procesos/" class="thumbnail">
-                                        <h3>PROCESOS</h3>
-                                        <img src="img/admin.jpg" alt="..." class="img-rounded">
-                                        
-                                    </a>
-                                </div>
-        
-                        <div class="col-sm-3 col-md-3">
-                                    <a href="cargos/" class="thumbnail">
-                                        <h3>CARGOS</h3>
-                                        <img src="img/admin.jpg" alt="..." class="img-rounded">
+                        <div class="col-sm-4 col-md-4">
+                                    <a href="alumnos/" class="thumbnail">
+                                        <center><h3>ESTUDIANTES</h3>     </center>
+                                        <img src="img/estudiantes.jpg" alt="..." class="img-rounded">
                                         
                                     </a>
                                 </div>
                         
-                        
-                          
+                    </div>
+                    
+                    
                     </div>
 
-                <footer class="footer">
-                     © 2017 UNIVERSIDAD NACIONAL DE SAN AGUSTIN
-                </footer>
+
+                
 
             </div>
             <!-- Fin del contenido de la pagina-->

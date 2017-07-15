@@ -112,7 +112,7 @@ require_once("..\..\clases/conexion/conexion.php");
                 <div class="contenido">
                       
                     <div class="cabecera-titulo">
-                            <h1>LISTADO DE ADMINISTRATIVOS</h1>
+                            <h1>LISTADO DE DOCENTES</h1>
                         </div>
                 </div><!-- contenedor -->
              <div class="container">
@@ -123,7 +123,7 @@ require_once("..\..\clases/conexion/conexion.php");
                             
                     <div class="col-sm-3 col-md-3">
                                     <a href="crear_adm.php" class="btn btn-primary ">
-                                        <span class="fa fa-check-square"></span> Ingresar nuevo Administrativo
+                                        <span class="fa fa-check-square"></span> Ingresar nuevo Docente
                                             </a>
                                     
                     </div>
