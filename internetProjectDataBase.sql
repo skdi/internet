@@ -1,4 +1,13 @@
 
+CREATE TABLE usuario (
+                id_usuario INT NOT NULL,
+                nombre VARCHAR(100) NOT NULL,
+                apellido VARCHAR(100) NOT NULL,
+                correo VARCHAR(50) NOT NULL,
+                PRIMARY KEY (id_usuario)
+);
+
+
 CREATE TABLE area (
                 nombre VARCHAR(20) NOT NULL,
                 PRIMARY KEY (nombre)
