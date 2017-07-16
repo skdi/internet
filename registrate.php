@@ -59,7 +59,7 @@
 	//Cantidad de registros
 	$cantidad_reg=mysqli_num_rows($consulta_reg);
 	//#var_dumb(#datos_reg);
-	$array=array($datos_reg["nombre"],%datos_reg["apellido"],%datos_reg["codigo"]);
+	//$array=array($datos_reg["nombre"],%datos_reg["apellido"],%datos_reg["codigo"]);
 	//Sacar datos con $datos;
 	mysqli_free_result($consulta_reg);
 	include("funciones.php");
