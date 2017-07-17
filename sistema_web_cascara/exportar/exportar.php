@@ -1,8 +1,10 @@
 <?php
+  $tabla=$_POST['tabla'];
+  $formato=$_POST['formato'];
   $connect=mysqli_connect("localhost","root","","proyecto");
   $output='';
   if(isset($_POST["export"])){
-    $query="SELECT *FROM Docente";
+    $query="SELECT *FROM "."$tabla";
     $result=mysqli_query($connect,$query); 
     if (mysqli_num_rows($result)>0) {
       $output .= '
