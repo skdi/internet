@@ -1,4 +1,7 @@
-
+<?php
+    $_SESSION['error']=FALSE;
+    $_SESSION['ejecuto']=FALSE;
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -111,24 +114,17 @@
                     <br>
                     <div class="container">
                         <div class="row" id="m_tabla">
-                            <div class="col-sm-4 col-md-4">
+                            <div class="col-sm-6 col-md-6">
                                     <a href="administrativos/" class="thumbnail">
                                         <center><h3>ADMINISTRATIVOS</h3>     </center>
                                         <img src="img/administrativo.jpg" alt="..." class="img-rounded">
                                         
                                     </a>
                                 </div>
-                         <div class="col-sm-4 col-md-4">
+                         <div class="col-sm-6 col-md-6">
                                     <a href="docentes/" class="thumbnail">
                                         <center><h3>DOCENTES</h3>     </center>
                                         <img src="img/docente1.jpg" alt="..." class="img-rounded">
-                                        
-                                    </a>
-                                </div>
-                        <div class="col-sm-4 col-md-4">
-                                    <a href="alumnos/" class="thumbnail">
-                                        <center><h3>ESTUDIANTES</h3>     </center>
-                                        <img src="img/estudiantes.jpg" alt="..." class="img-rounded">
                                         
                                     </a>
                                 </div>

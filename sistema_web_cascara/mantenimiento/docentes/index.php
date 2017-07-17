@@ -1,7 +1,7 @@
 <?php
 session_start();
-
 require_once("..\..\clases/conexion/conexion.php");
+    $_SESSION['id']="0";
     $con=$conexion;
 
 
@@ -21,7 +21,6 @@ require_once("..\..\clases/conexion/conexion.php");
         
     </head>
 
-
     <body class="fixed-left">
 
               <!-- COMIENZO DE PAGINA -->
@@ -32,7 +31,7 @@ require_once("..\..\clases/conexion/conexion.php");
                 <!-- LOGO -->
                 <div class="barra-top-izquierda">
 
-                    <a href="#" class="logo">Proyecto</a>
+                    <a href="../../admin.html" class="logo">MENU</a>
                 </div>
                 
                 
@@ -67,13 +66,14 @@ require_once("..\..\clases/conexion/conexion.php");
                     <!--- DIVISOR -->
 
 
+
                     <div id="menu-barra" >
                         <ul>
                             <li>
-                                <a href="index.html" ><span> INICIO </span></a>
+                                <a href="../../admin.html" ><span> INICIO </span></a>
                             </li>
                             <li class="activado" >
-                                <a href="mantenimiento/" ><span> MANTENIMIENTO </span></a>
+                                <a href="../" ><span> MANTENIMIENTO </span></a>
                             </li>
                             <li>
                                 <a href="#"><span> CREAR PREGUNTA </span></a>
@@ -100,30 +100,49 @@ require_once("..\..\clases/conexion/conexion.php");
                     <div class="clearfix"></div>
                 </div> <!-- MENU INTERIOR -->
             </div>
-        </div>
             <!-- MENU IZQUIERDA -->
 
 
             <!-- CONTENIDO AQUI -->
+        </div>
 
             <div class="pagina-contenido">
                 <!-- Contenido -->
                
                 <div class="contenido">
-                      
-                    <div class="cabecera-titulo">
+                    <div class="row">
+                        
+                   
+                    <div class="col-sm-1">    
+                    <div class="container">
+
+                       <a href="../" class="btn btn-default btn-lg ">
+                        <span class="fa fa-reply"></span> Volver
+                        </a>
+                        </div> 
+                 
+                        
+                    </div>       
+                        
+                    <div class="col-sm-3">  </div>
+                     <div class="col-sm-6" align="left">   
                             <h1>LISTADO DE DOCENTES</h1>
-                        </div>
-                </div><!-- contenedor -->
+                    </div> 
+
+
+                    </div>
+                   
+                </div>
              <div class="container">
+
               
             
             <div class="row" id="m_tabla" >
                             
                             
                     <div class="col-sm-3 col-md-3">
-                                    <a href="crear_adm.php" class="btn btn-primary ">
-                                        <span class="fa fa-check-square"></span> Ingresar nuevo Docente
+                                    <a href="crear.php" class="btn btn-success ">
+                                        <span class="fa fa-plus"></span> INGRESAR NUEVO DOCENTE
                                             </a>
                                     
                     </div>
@@ -136,9 +155,9 @@ require_once("..\..\clases/conexion/conexion.php");
                                 </button>
                                     <ul class="dropdown-menu" id="filtro">
                                         <?php
-									       $query=mysqli_query($con,"SELECT * FROM tipo_participante WHERE tipo='admin' ");
+									       $query=mysqli_query($con,"SELECT * FROM tipo_participacion ");
 									       while($d=mysqli_fetch_array($query)){
-                                                    echo '<li><a href="index.php?cargo='.$d['cargo'].'">'.$d['cargo'].'</a></li>';	
+                                                    echo '<li><a href="index.php?cargo='.$d['nombre'].'">'.$d['nombre'].'</a></li>';	
                                             }
                                         ?>
                                         <li class="divider"></li>
@@ -149,7 +168,7 @@ require_once("..\..\clases/conexion/conexion.php");
                     <div class="col-sm-4 col-md-4">
                             <form name="form1" method="post" action="index.php">
                               <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Buscar por Nombres / Apellidos / DNI" aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control" name= "busqueda" placeholder="Buscar por Nombres / Apellidos / DNI" aria-describedby="basic-addon2">
                                     <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-search"></span>
                               </div>
                                
@@ -167,11 +186,11 @@ require_once("..\..\clases/conexion/conexion.php");
                         <th>Dni</th>
                         <th>Apellido</th>
                         <th>Nombre</th>
-                        <th>Dependencia</th>
                         <th>Telefono</th>
                         <th>Correo</th>
                         <th>Cargo</th>
-                    
+                        <th>Estado</th>
+                        <th>Ver detalle</th>
                         <th>Actualizar</th>
                         <th>Eliminar</th>
                     </tr>
@@ -179,22 +198,22 @@ require_once("..\..\clases/conexion/conexion.php");
                     <tbody>
                     <?php
                        if(empty($_GET['cargo'])){
-					   if(empty($_POST['bus']))
+					   if(empty($_POST['busqueda']))
                        {
-						  $sql="SELECT * FROM participante ORDER BY apellidos";
+						  $sql="SELECT * FROM participante WHERE tipo_nombre='Docente' ORDER BY apellido ";
 					   }else{
-						      $bus=$_POST['bus'];
-						      $sql="SELECT * FROM participante WHERE nombre LIKE '$bus%' or apellidos LIKE '$bus%' or dni='$bus' ORDER BY apellidos";
+						      $bus=$_POST['busqueda'];
+						      $sql="SELECT * FROM participante WHERE nombre LIKE '$bus%' or apellido LIKE '$bus%' or dni='$bus' AND tipo_nombre='Docente' ORDER BY apellido";
 					       }
 				        }
                         else
                         {
 					       $bus=$_GET['cargo'];
 					       if($bus<>"todos"){
-						          $sql="SELECT * FROM participante WHERE cargo='$bus' ORDER BY apellidos";
+						          $sql="SELECT * FROM participante WHERE tipo_participacion='$bus' AND tipo_nombre='Docente' ORDER BY apellido";
 					           }
                            else{
-						          $sql="SELECT * FROM participante ORDER BY apellidos";
+						          $sql="SELECT * FROM participante WHERE tipo_nombre='Docente' ORDER BY apellido";
 					           }
 				        
                         }
@@ -205,7 +224,16 @@ require_once("..\..\clases/conexion/conexion.php");
                         
                         while($d=mysqli_fetch_array($query))
                             {
-                             echo '<tr><td>'.$d['dni'].'</td><td>'.$d['apellidos'].'</td><td>'.$d['nombre'].'</td><td>'.$d['dependencia'].'</td><td>'.$d['telefono'].'</td><td>'.$d['correo'].'</td><td>'.$d['cargo'].'</td><td>BOTONactulizar</td><td>BOTONELIMINAR</td>';	
+                                $o=$d['estado'];
+                                if($o<>'a')
+                                    $esta="no activo";
+                                else{
+                                    $esta="activo";
+                                
+                            }
+                             echo '<tr><td>'.$d['dni'].'</td><td>'.$d['apellido'].'</td><td>'.$d['nombre'].'</td><td>'.$d['telefono'].'</td><td>'.$d['correo'].'</td><td>'.$d['tipo_participacion'].'</td><td>'.$esta.'</td>
+                             <td><a href="ver_detalle.php?id='.$d['id_participante'].'" class="btn btn-info"><span class="fa fa-address-book"></span> Detalle </a></td><td><a href="actualizar.php?id='.$d['id_participante'].'" class="btn btn-primary"><span class="fa fa-edit "></span> Editar </a></td>
+                             <td><a href="clases/eliminar.php?id='.$d['id_participante'].'" class="btn btn-danger"><span class="fa fa-trash "></span>Eliminar </a></td>';
                             }
                        
                        
@@ -215,17 +243,18 @@ require_once("..\..\clases/conexion/conexion.php");
                 </tbody>
                 </table>
                 <?php
-                 if(!$d=mysqli_fetch_array($query))
+                 if(!mysqli_num_rows($query))
                  {
-                     echo '<div class="alert alert-info" align="center"><strong>No hay Administrativos Registrados</strong></div>' ;
+                     echo '<div class="alert alert-info" align="center"><strong>No hay Docentes Registrados</strong></div>' ;
                      
                  }
                 ?>
                 </div>
-                <br><br><br>
+
             </div> <!-- pagina contenido -->
+
         </div> 
-              
+
 
 
             <!-- Fin del contenido de la pagina-->

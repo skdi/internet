@@ -191,6 +191,7 @@ a:focus {
   margin-left: 10px;
   margin-right: 10px;
 }
+
 #table_re
 {
     background: white;
@@ -207,6 +208,37 @@ a:focus {
     margin-right: 10px;
 }
 
+#tabla_detalle { 
+  position: relative;
+  padding-top: 10px;
+  text-align: center;
+  background-color:azure;
+  padding-bottom: 10px;
+  border-style: solid;
+  margin-left: 250px;
+  margin-right: 250px;
+  font-family: cursive;
+}
+#tabla_detalle h1
+{
+    color: black;
+    font-family: sans-serif;
+    font-size:35px;
+    font-style: oblique;
+}
+
+#detalle
+{
+    background: white;
+    border:solid;
+    margin-left: 250px;
+    margin-right: 250px;
+    align-items: center;
+}
+#detalle tbody < tr < td
+{
+    align-content: center;
+}
 .row > table >thead
 {
     background: white;
