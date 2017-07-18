@@ -12,7 +12,13 @@
         <tr>
           <th>Edad</th>
           <th>Nombre</th>
-          <th>Apellido</th>          
+          <th>Apellido</th>
+          <th>Facultad</th>
+          <th>Teléfono</th>
+          <th>Correo</th>
+          <th>Categoria</th>
+          <th>Régimen</th>
+          <th>Cargo</th>
         </tr>
       ';
       while($row=mysqli_fetch_array($result)){
@@ -20,7 +26,13 @@
           <tr>
             <td>'.$row["dni"].'</td>
             <td>'.$row["nombre"].'</td>
-            <td>'.$row["Apellido"].'</td>
+            <td>'.$row["apellidos"].'</td>
+            <td>'.$row["facultad"].'</td>
+            <td>'.$row["telefono"].'</td>
+            <td>'.$row["correo"].'</td>
+            <td>'.$row["categoria"].'</td>
+            <td>'.$row["regimen"].'</td>
+            <td>'.$row["cargo"].'</td>
           </tr>
         ';
       }
@@ -28,6 +40,9 @@
       header('Content-Type: application/xls');
       header('Content-Disposition: attachment; filename=download.xls');
       echo $output;
+    }
+    else{
+      echo "<center><h4>No hay datos almacenados</h4></center>"
     }
   }
 ?>
