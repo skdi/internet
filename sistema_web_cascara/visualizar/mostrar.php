@@ -244,10 +244,8 @@ require_once("..\clases/conexion/conexion.php");
 					label: "Primera serie de datos",
 					fillColor : "rgba(220,220,220,0.2)",
 					strokeColor : "#6b9dfa",
-					pointColor : "#1e45d7",
-					pointStrokeColor : "#fff",
-					pointHighlightFill : "#fff",
-					pointHighlightStroke : "rgba(220,220,220,1)",
+					highlightFill: "rgba(73,286,160,0.6)",
+					highlightStroke: "rgba(66,196,157,0.7)",
 					data : [0,
  
                    
@@ -270,7 +268,7 @@ require_once("..\clases/conexion/conexion.php");
             }
 
 
-            window.myPie = new Chart(ctx4).Line(lineChartData, {responsive:true});
+            window.myPie = new Chart(ctx4).Bar(lineChartData, {responsive:true});
 
                 
             }
