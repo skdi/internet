@@ -5,13 +5,14 @@
 	}
 		
 	echo '<h1 align=center>Welcome :'.$_SESSION["user"].'</h1>';
-	echo '<p align=center><a href="logout.php">Logout</a></p>';
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
 		<meta name="viewport" content="width-device-width,use-scalable-no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+		<script src="js/jquery-3.2.1.js" charset="utf-8"></script>
+		<script src="bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
 
 		<title>Pagina del postulante</title>
 		<meta charset="utf-8">
@@ -41,7 +42,20 @@
 		
 		</head>
 	<body>
-
-</body>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-md-offset-4">
+				<form method="post">
+					</div>
+					<div class="form-group">
+						  <input type="button" name="login" id="login" value="Lgout" class="btn btn-success">
+						  
+					</div>
+					<br>
+				</form>
+				</div>
+			</div>
+		</div>
+	</body>
 
 </html>	

@@ -15,6 +15,7 @@ if (isset($_SESSION["user"])) {
     <script src="js/jquery-3.2.1.js" charset="utf-8"></script>
     <script src="bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
   </head>
+  <!--Creacion de botones y formulario -->
   <body style ="background:url(img/32-2.jpg) ;background-size:110%" >
    <br><br><br><br><br><br> 
     <div class="container">
@@ -45,6 +46,8 @@ if (isset($_SESSION["user"])) {
 </html>
 
 <script>
+    //script para cuando se haga click en el boton login se llame a validacion
+    //de login.php tambien le pasa los datos user y pass por medio de ajax 
   $(document).ready(function() {
     $('#login').click(function(){
       var user = $('#user').val();
@@ -64,7 +67,7 @@ if (isset($_SESSION["user"])) {
               $(location).attr('href','index.php');
             } else {
               $("#result").html("<div class='alert alert-dismissible alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Error!</strong> las credenciales son incorrectas.</div>");
-
+            }
           }
         });
       };
