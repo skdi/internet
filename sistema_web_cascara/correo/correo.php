@@ -21,6 +21,7 @@
 	}else {
 		echo "Problemas al enviar el correo ,porfavor verifique los datos";
 	}
+?>
 <!DOCTYPE html>
 <html>
 <head>
