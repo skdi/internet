@@ -7,13 +7,16 @@
 	    $sql="SELECT correo FROM participante";
 	    $query=mysqli_query($con,$sql);
 
-		while($destino){
-			$destino=$query;
-			$destino=$destino;
+	    $array=mysql_fetch_row ($query)
+	    $i=0;
+
+		while($array[$i]){
+			$destino=$array[$i];
 			$desde = "FROM:"."Administradivo UNSA";
 			$asunto =($_POST('asunto'));
 			$mensaje =($_POST('mensaje'));
 			mail($destino,$asunto,$mensaje,$desde);
+			$i++;
 
 		}
 		echo "Correos Enviados...";
@@ -21,7 +24,7 @@
 	}else {
 		echo "Problemas al enviar el correo ,porfavor verifique los datos";
 	}
-?>
+	?>
 <!DOCTYPE html>
 <html>
 <head>
