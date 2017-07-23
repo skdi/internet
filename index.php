@@ -1,3 +1,13 @@
+<?php
+	session_start();
+	if (!isset($_SESSION["user"])) {
+		header("location:login.php");
+	}
+		
+	echo '<h1 align=center>Welcome :'.$_SESSION["user"].'</h1>';
+	echo '<p align=center><a href="logout.php">Logout</a></p>';
+
+?>
 <!DOCTYPE html>
 <html lang="es">
 	<head>
@@ -28,9 +38,8 @@
 				color:#000;
 			}
 		</style>
-			<?php include ("login.php");
-	include ("menu.php"); ?>
-	</head>
+		
+		</head>
 	<body>
 
 </body>
