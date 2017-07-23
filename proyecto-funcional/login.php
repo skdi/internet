@@ -23,20 +23,23 @@ if (isset($_SESSION["user"])) {
         <div class="col-md-3 col-md-offset-4">
           <form method="post">
             <br><br>
-            <h1><p class="text-center">Login</p></h1>
+            <h1 class ="text-muted"><p class="text-center">Login</p></h1>
             <br><br>
             <div class="form-group">
-              <label for="user">Usuario o email</label>
+              <label  class ="text-info" for="user">Usuario o Email</label>
               <input type="text" name="user" id="user" class="form-control">
             </div>
             <div class="form-group">
-              <label for="pass">Password</label>
+              <label class ="text-info" for="pass">Password</label>
               <input type="password" name="pass" id="pass" class="form-control">
             </div>
             <div class="form-group">
               <input type="button" name="login" id="login" value="Login" class="btn btn-success">
             </div>
             <br>
+            <div>
+                <p align=center><a href="recuperarPass.php">Se ah olvidado la contraseña?</a></p>'
+            </div>
             <span id="result"></span>
           </form>
         </div>
