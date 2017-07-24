@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-07-2017 a las 14:35:14
+-- Tiempo de generación: 24-07-2017 a las 02:52:13
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.5.35
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `proyecto`
 --
+CREATE DATABASE IF NOT EXISTS `proyecto` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `proyecto`;
 
 -- --------------------------------------------------------
 
@@ -102,9 +104,22 @@ CREATE TABLE `detalle_participante` (
 
 INSERT INTO `detalle_participante` (`id_detalle_participante`, `facultad`, `regimen`, `dependencia`, `id_participante`, `categoria`) VALUES
 (3, '', '', 'aasfsa', 39, '123'),
-(5, '', '', '1asfasfasfa', 41, 'afasfafsa'),
 (8, '', '', '111', 44, '123123'),
-(12, 'area', 'area', '', 47, 'area');
+(12, 'area', 'area', '', 47, 'area'),
+(13, '', '', 'Ingenieria', 48, 'A'),
+(14, '', '', 'N/A', 49, 'N/A'),
+(15, '', '', 'N/A', 50, 'N/A'),
+(16, '', '', 'N/A', 51, 'N/A'),
+(17, '', '', 'N/A', 52, 'N/A'),
+(18, '', '', 'N/A', 53, 'N/A'),
+(19, '', '', 'N/A', 54, 'N/A'),
+(20, '', '', 'N/A', 55, 'N/A'),
+(21, '', '', 'N/A', 56, 'N'),
+(22, '', '', 'N/A', 57, 'N/A'),
+(24, 'N/A', 'N/A', '', 59, 'N/A'),
+(25, 'N/A', 'N/A', '', 60, 'N/A'),
+(26, 'N/A', 'N/A', '', 61, 'N/A'),
+(27, '', '', 'N/A', 62, 'N/A');
 
 -- --------------------------------------------------------
 
@@ -161,9 +176,23 @@ CREATE TABLE `participante` (
 
 INSERT INTO `participante` (`id_participante`, `dni`, `nombre`, `apellido`, `telefono`, `correo`, `tipo_nombre`, `veces_participo`, `tipo_participacion`, `estado`) VALUES
 (39, 1231231, '123123', '1231231', '123123', '123123123', 'Administrativo', 0, 'Contador', 'a'),
-(41, 23123123, 'a', 'alvarfes', 'a', 'a', 'Administrativo', 0, 'Controlador', 'a'),
 (44, 121, 'asdasd', 'aasda', '123123', 'asdasd', 'Administrativo', 0, 'Controlador', 'a'),
-(47, 12412411, 'asfasf', 'asfasf', 'asfasf', 'fasfasf', 'Docente', 0, 'Controlador', 'a');
+(47, 12412411, 'asfasf', 'asfasf', 'asfasf', 'fasfasf', 'Docente', 0, 'Controlador', 'a'),
+(48, 7148565, 'Fam', 'Chavez M', '179812', 'fra@gmai', 'Administrativo', 0, 'Controlador', 'a'),
+(49, 19283746, 'Juarez', 'Juarez', '62191642', '@juarez', 'Administrativo', 0, 'Conserje', 'a'),
+(50, 18273464, 'Alan', 'Fernandez', '183797', '@alan', 'Administrativo', 0, 'Conserje', 'a'),
+(51, 159753, 'PAblo', 'Pablo', '12545678', '@gmk', 'Administrativo', 0, 'Conserje', 'a'),
+(52, 1236781, 'Javi', 'Junto', '71240098', '@javi', 'Administrativo', 0, 'Contador', 'a'),
+(53, 123456888, 'Kion', 'Juez', '1254572', '@kion', 'Administrativo', 0, 'Conserje', 'a'),
+(54, 75315974, 'KIona', 'Kiean', '12456122', '@sa', 'Administrativo', 0, 'Contador', 'a'),
+(55, 123467855, 'Lam', 'Kipn', '1230f', '@lam', 'Administrativo', 0, 'Controlador', 'a'),
+(56, 125362617, 'Naruto', 'Uzumaki', '100086541', '@naru', 'Administrativo', 0, 'Conserje', 'a'),
+(57, 16347, 'Sasuke', 'Uchiha', '1234819', '@susa', 'Administrativo', 0, 'Controlador', 'a'),
+(58, 2147483647, 'Kilon', 'Juea', '12389578', '@gju', 'Docente', 0, 'Controlador', 'a'),
+(59, 754132696, 'austin', 'ausin', '1124678', '@gmk', 'Docente', 0, 'Controlador', 'a'),
+(60, 1611247, 'Nagato', 'Uzumaki', '161346796', '@nagto', 'Docente', 0, 'Controlador', 'a'),
+(61, 1256478, 'Itachi', 'Uchiha', '4157245', '@itachi', 'Docente', 0, 'Controlador_Puerta', 'a'),
+(62, 8764111, 'Martin', 'Marcus', '154878223', '@gmartin', 'Administrativo', 0, 'Portero', 'a');
 
 -- --------------------------------------------------------
 
@@ -233,7 +262,6 @@ CREATE TABLE `proceso_participante` (
 
 INSERT INTO `proceso_participante` (`id_proceso_participante`, `id_proceso`, `id_participante`, `area`, `id_aula`, `id_escuela`, `participacion`) VALUES
 (1, 1, 39, 'Ingenierias', 3, 1, 'Controlador'),
-(2, 1, 41, 'Ingenierias', NULL, NULL, 'Controlador_Puerta'),
 (3, 1, 44, 'Sociales', 11, 5, 'Controlador'),
 (4, 1, 47, 'Sociales', NULL, NULL, 'Conserje');
 
@@ -390,7 +418,7 @@ ALTER TABLE `aula`
 -- AUTO_INCREMENT de la tabla `detalle_participante`
 --
 ALTER TABLE `detalle_participante`
-  MODIFY `id_detalle_participante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_detalle_participante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT de la tabla `escuela`
 --
@@ -400,7 +428,7 @@ ALTER TABLE `escuela`
 -- AUTO_INCREMENT de la tabla `participante`
 --
 ALTER TABLE `participante`
-  MODIFY `id_participante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_participante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 --
 -- AUTO_INCREMENT de la tabla `pregunta`
 --
@@ -410,7 +438,7 @@ ALTER TABLE `pregunta`
 -- AUTO_INCREMENT de la tabla `proceso`
 --
 ALTER TABLE `proceso`
-  MODIFY `id_proceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_proceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `proceso_participante`
 --
