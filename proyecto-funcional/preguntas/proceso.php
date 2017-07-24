@@ -20,11 +20,9 @@ require_once("class.php");
         $nombre=$result['nombre'];
         $fecha=$result['fecha'];
     }
-    if(!empty($_GET['fu']))
-    {
-        $fu=$_GET['fu'];
-    }
-        
+    $query = "SELECT nombre FROM area ORDER BY nombre";
+	$resultado=mysqli_query($con,$query);
+
 ?>
 
 <!DOCTYPE html>
@@ -78,7 +76,7 @@ require_once("class.php");
                                
                                 <ul class="dropdown-menu">
                                     <li><a href=""> Perfil</a></li>
-                                    <li><a href=""> Configuracion   </a></li>
+                                    <li><a href=""> Configuracion  </a></li>
                                     <li class="divider"></li>
                                     <li><a href=""> Cerrar Sesion</a></li>
                                 </ul>
@@ -90,7 +88,7 @@ require_once("class.php");
                     <!--- DIVISOR -->
 
 
-                   <div id="menu-barra">
+                  <div id="menu-barra">
                         <ul>
                             <li >
                                 <a href="../admin.html" ><span> INICIO </span></a>
@@ -98,11 +96,11 @@ require_once("class.php");
                             <li>
                                 <a href="../mantenimiento" ><span> MANTENIMIENTO </span></a>
                             </li>
-                            <li class="activado" >
+                            <li>
                                 <a href="../visualizar"><span> VISUALIZAR </span></a>
                             </li>
-                            <li>
-                                <a href="../preguntas"><span> REGISTRAR PREGUNTAS</span></a>
+                            <li class="activado">
+                                <a href="../prepreguntas"><span> REGISTRAR PREGUNTAS</span></a>
                             </li>
                             <li>
                                 <a href="../seleccionar"><span> ASIGNAR PERSONAL </span></a>
@@ -119,8 +117,7 @@ require_once("class.php");
 
                         </ul>
                     </div>
-                  
-                  
+                    
                     <div class="clearfix"></div>
                 </div> <!-- MENU INTERIOR -->
             </div>
@@ -137,14 +134,18 @@ require_once("class.php");
                         
                    
                     <div class="col-sm-1">    
-       
+                    <div class="container">     
+
+                <div class="col-sm-12"align="left" >
+                        <a href="index.php" class="btn btn-danger"><span class="fa fa-reply"></span>Volver</a>
+                        </div>   
+            </div>
                         
                     </div>
                     <div class="col-sm-2">  </div>
                      <div class="col-sm-9" align="left">   
                             <h1>Proceso <?php echo $nombre; ?></h1>
                             <h2>Fecha : <?php echo $fecha; ?></h2>
-                            <h3>Funcion: <?php echo $fu ;?></h3>
                     </div> 
 
 
@@ -156,11 +157,52 @@ require_once("class.php");
               
             
             <div class="row" id="tabla_sel" >
-                            
-                    <div class="container">
+                       <div class="container">
                         <p><span class="fa fa-info-circle"></span>
-                            Se muestran todos los datos de los participantes en la funcion de <?php echo $fu; ?> <span class="fa fa-keyboard-o"></span>
+                            Se muestra la lista de todas las preguntas pertenecientes al Proceso <?php echo $nombre ?> puedes filtrarlas de acuerdo a su area,y estado 
+                            <span class="fa fa-keyboard-o"></span>
                         </p>
+                        <div class="col-sm-6">
+                            <a href="crear_p.php" class="btn btn-success ">
+                                        <span class="fa fa-plus"></span> INGRESAR NUEVA PREGUNTA
+                            </a>
+                        </div>   
+                        <div class="col-sm-6">
+                         <div class="row">
+                            <form name="form1" method="POST" action="pro_sel.php">
+                              <div class="col-sm-12">
+                                    <label>Area:</label>
+                                    <select class="form-control" id="area" name="area" required>
+                                    <option value='0'>Todas</option>
+                                    <?php
+									       while($d=mysqli_fetch_array($resultado)){
+                                                    echo '<option value='.$d['nombre'].'>'.$d['nombre'].'</option>';
+                                            }
+                                        ?>
+                                    </select>
+                              </div>
+                                        
+
+                                  
+                              <div class="col-sm-9">
+                                  <br>
+                                 <label class="radio-inline"><input type="radio" name="estado">Activos</label>
+                                 <label class="radio-inline"><input type="radio" name="estado">Inactivas</label>
+                                <label class="radio-inline"><input type="radio" name="estado">Ambas</label> 
+                            </div>
+                                  
+                            <div class="col-sm-3 ">
+                                <br>
+                                <input type="submit" class="btn btn-warning" value="Buscar">
+                            </div>
+                        </form>         
+                            
+                        </div>
+
+                        </div>
+                        
+                          
+
                 </div>
             </div>
                 
@@ -169,63 +211,38 @@ require_once("class.php");
         <div class="row" id="tabla_a1">
             <div class="col-sm-12 col-md-12">
                 <br>
-                    <?php
-
-                          $sql="SELECT nombre,dni,apellido,tipo_nombre,estado,veces_participo,participacion FROM proceso_participante inner join (SELECT * from participante ) as A ON proceso_participante.id_participante= A.id_participante and id_proceso='$id' and participacion='$fu' " ;
-                        ?>
-                       <table class="table table-striped table-bordered table-hover table-condensed">
+                      
+                    <table class="table table-striped table-bordered table-hover table-condensed">
                         <thead>
                             <tr>
-                            <th>DNI</th>
-                            <th>NOMBRE</th>
-                            <th>APELLIDO</th>
-                            <th>ESTADO</th>
-                            <th>TIPO</th>   
+                            <th>CARGO</th>
+                            <th>Cantidad_Total</th>
+                            <th>Acciones</th>
                             <th>VER</th>
+                            
                             </tr>
                         </thead>
                             <tbody>
-                               <?php
-                                 $query=mysqli_query($conexion,$sql);
-                                 while($d=mysqli_fetch_array($query))
-                                 {
-                                     $o=$d['estado'];
-                                     if($o<>'a')
-                                        $esta="no activo";
-                                    else{
-                                        $esta="activo";
-                                
-                                }
-                                echo '<tr><td>'.$d['dni'].'</td><td>'.$d['apellido'].'</td><td>'.$d['nombre'].'</td><td>'.$esta.'</td><td>'.$d['tipo_nombre'].'</td><td><a href="ver_perfil.php?dni='.$d['dni'].'" class="btn btn-info"><span class="fa fa-address-book"></span> Ver Perfil</a></td>';
-                            }
-                       
-                       
-                        ?>
-
+                                 
                             </tbody>
                         </table>
-                
-                <?php
-                        if(!mysqli_num_rows($query))
-                        {
-                        echo '<div class="alert alert-info" align="center"><strong>No hay participantes con el cargo de '.$fu.' registradas en este proceso</strong></div>' ;
-                     
-                        }
+                  
+					
 
-                ?>
+                
+                
+                   
             
+
+                
             </div>
+            
+             
+           
 
             </div>       
         </div>
-                <div class="container" id="volver">     
-                <br><br><br>
-               <a href="pro_sel.php" class="btn btn-default btn-lg ">
-               <span class="fa fv"></span> Regresar
-                        </a>
-                        </div> 
-                 
-        </div><!-- pagina contenido -->
+
           </div> 
   
                 

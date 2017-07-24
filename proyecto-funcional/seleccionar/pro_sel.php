@@ -86,22 +86,22 @@ require_once("class.php");
                     <!--- DIVISOR -->
 
 
-                        <div id="menu-barra">
+                      <div id="menu-barra">
                         <ul>
-                            <li>
-                                <a href="../" ><span> INICIO </span></a>
-                            </li>
-                            <li>
-                                <a href="../mantenimiento/" ><span> MANTENIMIENTO </span></a>
-                            </li>
                             <li >
-                                <a href="../visualizar/"><span> VISUALIZAR </span></a>
+                                <a href="../admin.html" ><span> INICIO </span></a>
                             </li>
                             <li>
-                                <a href="#"><span> PREGUNTAS </span></a>
+                                <a href="../mantenimiento" ><span> MANTENIMIENTO </span></a>
                             </li>
-                            <li class="activado" >
-                                <a href="#"><span> ASIGNAR PERSONAL </span></a>
+                            <li>
+                                <a href="../visualizar"><span> VISUALIZAR </span></a>
+                            </li>
+                            <li>
+                                <a href="../preguntas"><span> REGISTRAR PREGUNTAS</span></a>
+                            </li>
+                            <li class="activado">
+                                <a href="../seleccionar"><span> ASIGNAR PERSONAL </span></a>
                             </li>
                             <li>
                                 <a href="#"><span> IMPORTAR DATOS </span></a>
@@ -115,7 +115,6 @@ require_once("class.php");
 
                         </ul>
                     </div>
-                    
                     <div class="clearfix"></div>
                 </div> <!-- MENU INTERIOR -->
             </div>

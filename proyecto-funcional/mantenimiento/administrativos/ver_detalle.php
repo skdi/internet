@@ -93,22 +93,22 @@ require_once("..\..\clases/conexion/conexion.php");
 
 
 
-                    <div id="menu-barra" >
+                  <div id="menu-barra">
                         <ul>
-                            <li>
+                            <li >
                                 <a href="../../admin.html" ><span> INICIO </span></a>
                             </li>
                             <li class="activado" >
-                                <a href="../" ><span> MANTENIMIENTO </span></a>
+                                <a href="../../mantenimiento" ><span> MANTENIMIENTO </span></a>
                             </li>
                             <li>
-                                <a href="#"><span> CREAR PREGUNTA </span></a>
+                                <a href="../../visualizar"><span> VISUALIZAR </span></a>
                             </li>
                             <li>
-                                <a href="#"><span> SELECCIONAR PREGUNTAS</span></a>
+                                <a href="../../preguntas"><span> REGISTRAR PREGUNTAS</span></a>
                             </li>
                             <li>
-                                <a href="#"><span> SELECCIONAR PROCESO </span></a>
+                                <a href="../../seleccionar"><span> ASIGNAR PERSONAL </span></a>
                             </li>
                             <li>
                                 <a href="#"><span> IMPORTAR DATOS </span></a>

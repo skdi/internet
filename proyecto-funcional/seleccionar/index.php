@@ -18,8 +18,7 @@ require_once("..\clases/conexion/conexion.php");
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+       
 
 
     </head>
@@ -71,22 +70,22 @@ require_once("..\clases/conexion/conexion.php");
                     <!--- DIVISOR -->
 
 
-                    <div id="menu-barra">
+                  <div id="menu-barra">
                         <ul>
-                            <li>
-                                <a href="../" ><span> INICIO </span></a>
-                            </li>
-                            <li>
-                                <a href="../mantenimiento/" ><span> MANTENIMIENTO </span></a>
-                            </li>
                             <li >
-                                <a href="../visualizar/"><span> VISUALIZAR </span></a>
+                                <a href="../admin.html" ><span> INICIO </span></a>
                             </li>
                             <li>
-                                <a href="#"><span> PREGUNTAS </span></a>
+                                <a href="../mantenimiento" ><span> MANTENIMIENTO </span></a>
                             </li>
-                            <li class="activado" >
-                                <a href="#"><span> ASIGNAR PERSONAL </span></a>
+                            <li>
+                                <a href="../visualizar"><span> VISUALIZAR </span></a>
+                            </li>
+                            <li>
+                                <a href="../preguntas"><span> REGISTRAR PREGUNTAS</span></a>
+                            </li>
+                            <li class="activado">
+                                <a href="../seleccionar"><span> ASIGNAR PERSONAL </span></a>
                             </li>
                             <li>
                                 <a href="#"><span> IMPORTAR DATOS </span></a>
@@ -237,12 +236,7 @@ require_once("..\clases/conexion/conexion.php");
                         </a>
                         </div> 
         </div>
-        <script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
-        <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
-        <script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
-        <script src="js/data-picker.js"></script>
-        
+
         <!-- Fin de la envoltura-->
     </body>
 </html>

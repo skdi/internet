@@ -170,23 +170,22 @@ if(empty($_GET['id']))
                     </div>
                     <!--- DIVISOR -->
 
-
-      <div id="menu-barra">
+                    <div id="menu-barra">
                         <ul>
-                            <li>
-                                <a href="../" ><span> INICIO </span></a>
-                            </li>
-                            <li>
-                                <a href="../mantenimiento/" ><span> MANTENIMIENTO </span></a>
-                            </li>
                             <li >
-                                <a href="../visualizar/"><span> VISUALIZAR </span></a>
+                                <a href="../admin.html" ><span> INICIO </span></a>
                             </li>
                             <li>
-                                <a href="#"><span> PREGUNTAS </span></a>
+                                <a href="../mantenimiento" ><span> MANTENIMIENTO </span></a>
                             </li>
-                            <li class="activado" >
-                                <a href="#"><span> ASIGNAR PERSONAL </span></a>
+                            <li>
+                                <a href="../visualizar"><span> VISUALIZAR </span></a>
+                            </li>
+                            <li>
+                                <a href="../preguntas"><span> REGISTRAR PREGUNTAS</span></a>
+                            </li>
+                            <li class="activado">
+                                <a href="../seleccionar"><span> ASIGNAR PERSONAL </span></a>
                             </li>
                             <li>
                                 <a href="#"><span> IMPORTAR DATOS </span></a>
@@ -295,7 +294,7 @@ if(empty($_GET['id']))
                     </div>
                     
                     <div class="col-xs-3">
-                        <label for="correo">Cantidad de Procesos asistidos :</label>
+                        <label for="correo">Cantidad de Procesos asistidos:</label>
                         <input class="form-control" id="correo" value="<?php echo $asistencia; ?>" name="correo" type="text" readonly>
                     </div> 
                     <?php 
@@ -397,7 +396,8 @@ if(empty($_GET['id']))
                       <input type="hidden"  name="escuela" value="<?php echo $escuela ?>">
                       <input type="hidden"  name="aula" value="<?php echo $aula ?>">
                       <input type="hidden"  name="id_participante" value="<?php echo $id_participante ?>">
-                      <input type="hidden"  name="id_proceso" value="<?php echo $id_proceso ?>">
+                      <input type="hidden"  name="fu" value="<?php echo $fu ?>">
+                      <input type="hidden"  name="id_proceso" value="<?php echo $id ?>">
                     <div class="col-sm-12"> 
                         <br>
                         <input type="submit" class="btn btn-success" value="REGISTRAR EN PROCESO">

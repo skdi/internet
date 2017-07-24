@@ -1,7 +1,7 @@
 <?php
-    $_SESSION['error']=FALSE;
-    $_SESSION['ejecuto']=FALSE;
+
 ?>
+<!-- SELECT * FROM `proceso` WHERE YEAR(fecha)= 2015 -->
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,10 +10,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
         <title>SISTEMA DE PROCESOS DE ADMISION</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-        <link href="../css/style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+       
+
 
     </head>
 
@@ -44,7 +46,7 @@
                    
                     <div class="detalles-usuario">
                         <div class="text-center">
-                            <img src="img/admin.jpg" alt="" class="img-circle">
+                            <img src="../img/admin.jpg" alt="" class="img-circle">
                         </div>
                         <div class="info-usuario">  
                             <div class="dropdown">
@@ -64,12 +66,12 @@
                     <!--- DIVISOR -->
 
 
-                    <div id="menu-barra">
+                  <div id="menu-barra">
                         <ul>
                             <li >
                                 <a href="../admin.html" ><span> INICIO </span></a>
                             </li>
-                            <li class="activado">
+                            <li>
                                 <a href="../mantenimiento" ><span> MANTENIMIENTO </span></a>
                             </li>
                             <li>
@@ -78,8 +80,8 @@
                             <li>
                                 <a href="../preguntas"><span> REGISTRAR PREGUNTAS</span></a>
                             </li>
-                            <li>
-                                <a href="../seleccionar/"><span> ASIGNAR PERSONAL </span></a>
+                            <li class="activado">
+                                <a href="../seleccionar"><span> ASIGNAR PERSONAL </span></a>
                             </li>
                             <li>
                                 <a href="#"><span> IMPORTAR DATOS </span></a>
@@ -104,51 +106,44 @@
 
             <div class="pagina-contenido">
                 <!-- Contenido -->
-                <div class="contenido">
-                    <div class="container">
-                    <center> <h1 class="titulo-pagina">MANTENIMIENTO</h1> </center>
-                    </div>
-                    
-                    <br>
-                    <div class="container">
-                        <div class="row" id="m_tabla">
-                            <div class="col-sm-6 col-md-6">
-                                    <a href="administrativos/" class="thumbnail">
-                                        <center><h3>ADMINISTRATIVOS</h3>     </center>
-                                        <img src="img/administrativo.jpg" alt="..." class="img-rounded">
-                                        
-                                    </a>
-                                </div>
-                         <div class="col-sm-6 col-md-6">
-                                    <a href="docentes/" class="thumbnail">
-                                        <center><h3>DOCENTES</h3>     </center>
-                                        <img src="img/docente1.jpg" alt="..." class="img-rounded">
-                                        
-                                    </a>
-                                </div>
+                
+                 <div class="contenido">
+                    <div class="row">
+                        
+                   
+                    <div class="col-sm-1">    
+       
                         
                     </div>
-                    
-                    
+                    <div class="col-sm-3">  </div>
+                     <div class="col-sm-6" align="left">   
+                            <h1>ERROR EN EL PROCESO</h1>
+                    </div> 
+
+
                     </div>
+                   
+                </div><!-- contenedor -->
+             <div class="container">
 
+        <div class="row" id="tabla_ad">
 
+            <div class="alert alert-danger" align="center"><strong>ERROR: Participante no fue Agregado a Proceso ...!!!</strong></div>;
+ 
+        </div>
+                
                 
 
-            </div>
-                
-                <div class="container">
-
-                       <a href="../admin.html" class="btn btn-default btn-lg ">
-                        <span class="fa fa-reply"></span> Volver a Inicio
+            <!-- Fin del contenido de la pagina-->
+                </div>
+                <div class="container" id="volver">     
+                <br><br><br>
+               <a href="../seleccionar/" class="btn btn-default btn-lg ">
+               <span class="fa fa-close"></span> Cerrar
                         </a>
                         </div> 
-                 
-                        
-                    </div>       
-            <!-- Fin del contenido de la pagina-->
-
         </div>
+
         <!-- Fin de la envoltura-->
     </body>
 </html>
