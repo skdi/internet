@@ -5,6 +5,8 @@
 	}
 		
 	echo '<h1 align=center>Welcome :'.$_SESSION["user"].'</h1>';
+	echo '<p align=center><a href="logout.php">Logout</a></p>';
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -48,7 +50,6 @@
 				<form method="post">
 					</div>
 					<div class="form-group">
-						  <input type="button" name="login" id="login" value="Lgout" class="btn btn-success">
 						  
 					</div>
 					<br>

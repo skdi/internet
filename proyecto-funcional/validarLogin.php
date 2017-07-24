@@ -2,7 +2,7 @@
     //clase encargada de validad al usuario que esta queriendo loguearse
     session_start();
     $hostName="localhost";
-    $dataBaseName="internetProjectDataBase";
+    $dataBaseName="proyecto";
     $user="root";
     $password="";       
     $connect=mysqli_connect($hostName,$user,$password,$dataBaseName);//conect to data base
@@ -10,7 +10,7 @@
     {
         $user=mysqli_real_escape_string($connect,$_POST["user"]);//por si hay inyecsion sql
         $pass=mysqli_real_escape_string($connect,$_POST["pass"]);
-        $sql="SELECT user FROM usuario WHERE (user ='$user' OR email='$user') AND pass='$pass'";
+        $sql="SELECT user FROM usuario WHERE (user ='$user' OR correo='$user') AND pass='$pass'";
         $result=mysqli_query($connect,$sql);
         $num_row=mysqli_num_rows($result);
         if ($num_row=="1") {//si se auntentifico correctamente 
