@@ -67,7 +67,7 @@ if (isset($_SESSION["user"])) {
           success:function(data) {
             $('#login').val("Login");
             if (data=="1") {
-              $(location).attr('href','index.php');
+              $(location).attr('href','admin.html');
             } else {
               $("#result").html("<div class='alert alert-dismissible alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Error!</strong> las credenciales son incorrectas.</div>");
             }

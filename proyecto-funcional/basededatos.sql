@@ -315,10 +315,19 @@ INSERT INTO `tipo_participante` (`nombre`) VALUES
 
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
+  `user` varchar(50) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
-  `correo` varchar(50) NOT NULL
+  `correo` varchar(50) NOT NULL,
+  `pass` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `user`, `nombre`, `apellido`, `correo`, `pass`) VALUES
+(1, 'andre1', 'andre', 'mogrovejo', 'andre@gmail.com', '12345');
 
 --
 -- Índices para tablas volcadas
