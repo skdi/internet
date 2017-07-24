@@ -23,7 +23,7 @@ if (isset($_SESSION["user"])) {
         <div class="col-md-3 col-md-offset-4">
           <form method="post">
             <br><br>
-            <h1 class ="text-muted"><p class="text-center">Login</p></h1>
+            <h1 class ="text-muted"><p class="text-center">WELCOME</p></h1>
             <br><br>
             <div class="form-group">
               <label  class ="text-info" for="user">Usuario o Email</label>
