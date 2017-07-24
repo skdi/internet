@@ -24,7 +24,7 @@ require_once("class.php");
     {
         $fu=$_GET['fu'];
     }
-        
+
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +75,6 @@ require_once("class.php");
                         <div class="info-usuario">  
                             <div class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">ADMINISTRADOR <span class="glyphicon glyphicon-menu-down"></span></a>
-                               
                                 <ul class="dropdown-menu">
                                     <li><a href=""> Perfil</a></li>
                                     <li><a href=""> Configuracion   </a></li>
@@ -90,7 +89,7 @@ require_once("class.php");
                     <!--- DIVISOR -->
 
 
-                    <div id="menu-barra">
+                          <div id="menu-barra">
                         <ul>
                             <li>
                                 <a href="../" ><span> INICIO </span></a>
@@ -98,13 +97,13 @@ require_once("class.php");
                             <li>
                                 <a href="../mantenimiento/" ><span> MANTENIMIENTO </span></a>
                             </li>
-                            <li class="activado">
+                            <li >
                                 <a href="../visualizar/"><span> VISUALIZAR </span></a>
                             </li>
                             <li>
                                 <a href="#"><span> PREGUNTAS </span></a>
                             </li>
-                            <li>
+                            <li class="activado" >
                                 <a href="#"><span> ASIGNAR PERSONAL </span></a>
                             </li>
                             <li>
@@ -128,7 +127,7 @@ require_once("class.php");
 
             <!-- CONTENIDO AQUI -->
 
-            <div class="pagina-contenido">
+        <div class="pagina-contenido">
                 <!-- Contenido -->
                 
                  <div class="contenido">
@@ -143,91 +142,93 @@ require_once("class.php");
                      <div class="col-sm-9" align="left">   
                             <h1>Proceso <?php echo $nombre; ?></h1>
                             <h2>Fecha : <?php echo $fecha; ?></h2>
-                            <h3>Funcion: <?php echo $fu ;?></h3>
+                            <h3>Asignacion de participantes a la funcion: <?php echo $fu ;?></h3>
+                           
                     </div> 
 
 
                     </div>
                    
                 </div><!-- contenedor -->
-             <div class="container">
+        <div class="container">
 
               
             
             <div class="row" id="tabla_sel" >
                             
                     <div class="container">
-                        <p><span class="fa fa-info-circle"></span>
-                            Se muestran todos los datos de los participantes en la funcion de <?php echo $fu; ?> <span class="fa fa-keyboard-o"></span>
-                        </p>
-                </div>
+                        
+                    <div class="col-xs-6">
+                      <div class="row">
+                         <form name="form1" action="registros.php" method="post">    
+                             <div class="col-xs-12">
+                                  <h3><span class="glyphicon glyphicon-search"> </span> Buscar por N° de participaciones</h3>
+                                  <input class="form-control"  id="par" type="number" name="bus_par" placeholder="N° participaciones" autocomplete="off" required>
+                             </div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-sm-3">
+                                 <input type="hidden"  name="fu" value="<?php echo $fu ?>">
+                                 <input type="submit" class="btn btn-success" value="Buscar por participaciones">
+                             </div>
+                          </form>
+                         </div>        
+                    </div>
+                      
+                    <div class="col-xs-6">
+                       <form name="form2" action="registros.php" method="post">
+                            <div class="row">
+                                 <div class="col-xs-12">
+                                    <h3><span class="glyphicon glyphicon-search"> </span> Busqueda especifica</h3>
+                                <input type="text" id="doc" class="form-control" name="bus_es" placeholder="Ingrese Nombre/Apellido/DNI" aria-describedby="basic-addon2" autocomplete="off" required>
+                                  </div>
+                                <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                              <div class="col-sm-3">
+                                  <input type="hidden"  name="fu" value="<?php echo $fu ?>">
+                                  <input type="submit" class="btn btn-danger" value="Buscar especificamente">
+                              </div>
+                            </div>   
+                        </form>
+                    </div>
+                      <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"></div>
+                             <div class="col-xs-12"><br></div>
+                    
+                    <div class="col-xs-12">
+                        <h3><span class="glyphicon glyphicon-search"> </span> Busqueda Aleatoria </h3>
+                    </div>
+                        <div class="col-xs-4">
+                    
+                            <a href="registros.php?id_al=si&fu=<?php echo $fu ?>" class="btn btn-warning">Buscar Aleatoriamente</a>
+                    </div>
+                    </div>
             </div>
-                
-        
-  
-        <div class="row" id="tabla_a1">
-            <div class="col-sm-12 col-md-12">
-                <br>
-                    <?php
 
-                          $sql="SELECT nombre,dni,apellido,tipo_nombre,estado,veces_participo,participacion FROM proceso_participante inner join (SELECT * from participante ) as A ON proceso_participante.id_participante= A.id_participante and id_proceso='$id' and participacion='$fu' " ;
-                        ?>
-                       <table class="table table-striped table-bordered table-hover table-condensed">
-                        <thead>
-                            <tr>
-                            <th>DNI</th>
-                            <th>NOMBRE</th>
-                            <th>APELLIDO</th>
-                            <th>ESTADO</th>
-                            <th>TIPO</th>   
-                            <th>VER</th>
-                            </tr>
-                        </thead>
-                            <tbody>
-                               <?php
-                                 $query=mysqli_query($conexion,$sql);
-                                 while($d=mysqli_fetch_array($query))
-                                 {
-                                     $o=$d['estado'];
-                                     if($o<>'a')
-                                        $esta="no activo";
-                                    else{
-                                        $esta="activo";
-                                
-                                }
-                                echo '<tr><td>'.$d['dni'].'</td><td>'.$d['apellido'].'</td><td>'.$d['nombre'].'</td><td>'.$esta.'</td><td>'.$d['tipo_nombre'].'</td><td><a href="ver_perfil.php?dni='.$d['dni'].'" class="btn btn-info"><span class="fa fa-address-book"></span> Ver Perfil</a></td>';
-                            }
-                       
-                       
-                        ?>
-
-                            </tbody>
-                        </table>
-                
-                <?php
-                        if(!mysqli_num_rows($query))
-                        {
-                        echo '<div class="alert alert-info" align="center"><strong>No hay participantes con el cargo de '.$fu.' registradas en este proceso</strong></div>' ;
-                     
-                        }
-
-                ?>
-            
-            </div>
-
-            </div>       
-        </div>
-                <div class="container" id="volver">     
+        </div>     
+             <div class="container" id="volver">     
                 <br><br><br>
-               <a href="pro_sel.php" class="btn btn-default btn-lg ">
-               <span class="fa fv"></span> Regresar
-                        </a>
-                        </div> 
-                 
-        </div><!-- pagina contenido -->
-          </div> 
-  
-                
+                <a href="pro_sel.php" class="btn btn-default btn-lg ">
+                <span class="fa fv"></span> Volver
+                </a>
+            </div> 
+    </div>
+
 
             <!-- Fin del contenido de la pagina-->
 

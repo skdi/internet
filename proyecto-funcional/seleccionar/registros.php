@@ -3,16 +3,16 @@ session_start();
 require_once("..\clases/conexion/conexion.php");
 require_once("class.php");
     if(empty($_GET['id']))
-         $id=$_SESSION['id']; 
+         $id_proceso=$_SESSION['id']; 
     else
     {
         $_SESSION['id']=$_GET['id'];
-         $id=$_SESSION['id']; 
+         $id_proceso=$_SESSION['id']; 
         
     }
     $con=$conexion;
     
-    $sql ="SELECT * FROM proceso WHERE (id_proceso='".$id."')";
+    $sql ="SELECT * FROM proceso WHERE (id_proceso='".$id_proceso."')";
     $consulta = mysqli_query($con,$sql);
     if ($result=mysqli_fetch_array($consulta))
     {
@@ -20,10 +20,40 @@ require_once("class.php");
         $nombre=$result['nombre'];
         $fecha=$result['fecha'];
     }
+    $id_al='no';
+    $bus='no';
+    $cantidad='si';
+    $cant=0;
     if(!empty($_GET['fu']))
     {
         $fu=$_GET['fu'];
     }
+
+    if(!empty($_GET['id_al']))
+    {
+        $id_al='si';
+    }
+
+    if(!empty($_POST['bus_es'])){
+        $busqueda=$_POST['bus_es'];
+        $bus='si';
+    }
+
+    if(!empty($_POST['bus_par']) )
+    {
+        $cant=intval($_POST['bus_par']);
+        $cantidad='si';
+    }
+    
+    if(!empty($_POST['fu']))
+    {
+        $fu=$_POST['fu'];
+    }
+
+    
+    
+
+    
         
 ?>
 
@@ -90,7 +120,7 @@ require_once("class.php");
                     <!--- DIVISOR -->
 
 
-                    <div id="menu-barra">
+                          <div id="menu-barra">
                         <ul>
                             <li>
                                 <a href="../" ><span> INICIO </span></a>
@@ -98,13 +128,13 @@ require_once("class.php");
                             <li>
                                 <a href="../mantenimiento/" ><span> MANTENIMIENTO </span></a>
                             </li>
-                            <li class="activado">
+                            <li >
                                 <a href="../visualizar/"><span> VISUALIZAR </span></a>
                             </li>
                             <li>
                                 <a href="#"><span> PREGUNTAS </span></a>
                             </li>
-                            <li>
+                            <li class="activado" >
                                 <a href="#"><span> ASIGNAR PERSONAL </span></a>
                             </li>
                             <li>
@@ -169,8 +199,23 @@ require_once("class.php");
             <div class="col-sm-12 col-md-12">
                 <br>
                     <?php
+                          if($id_al==='si')
+                          {
+                            $aleatorio=new Preguntas($id_proceso);
+                            $registros=$aleatorio->aleatorio($id_proceso,$fu);
+                          }
+                          else if($bus==='si')
+                          {
+                              $bus=new Preguntas($id_proceso);
+                              $registros=$bus->especifico($id_proceso,$fu,$busqueda);
+                          }
+                         else if($cantidad=='si')
+                            {
+                              $bus=new Preguntas($id_proceso);
+                             $registros=$bus->parti($cant,$id_proceso,$fu);
+                          }
+  
 
-                          $sql="SELECT nombre,dni,apellido,tipo_nombre,estado,veces_participo,participacion FROM proceso_participante inner join (SELECT * from participante ) as A ON proceso_participante.id_participante= A.id_participante and id_proceso='$id' and participacion='$fu' " ;
                         ?>
                        <table class="table table-striped table-bordered table-hover table-condensed">
                         <thead>
@@ -180,41 +225,25 @@ require_once("class.php");
                             <th>APELLIDO</th>
                             <th>ESTADO</th>
                             <th>TIPO</th>   
-                            <th>VER</th>
+                            <th>CARGO</th>   
+                            <th>Gestionar</th>
                             </tr>
                         </thead>
                             <tbody>
                                <?php
-                                 $query=mysqli_query($conexion,$sql);
-                                 while($d=mysqli_fetch_array($query))
-                                 {
-                                     $o=$d['estado'];
-                                     if($o<>'a')
-                                        $esta="no activo";
-                                    else{
-                                        $esta="activo";
-                                
-                                }
-                                echo '<tr><td>'.$d['dni'].'</td><td>'.$d['apellido'].'</td><td>'.$d['nombre'].'</td><td>'.$esta.'</td><td>'.$d['tipo_nombre'].'</td><td><a href="ver_perfil.php?dni='.$d['dni'].'" class="btn btn-info"><span class="fa fa-address-book"></span> Ver Perfil</a></td>';
-                            }
-                       
-                       
-                        ?>
+                                 echo $registros;
+                                ?>
 
                             </tbody>
                         </table>
                 
                 <?php
-                        if(!mysqli_num_rows($query))
-                        {
-                        echo '<div class="alert alert-info" align="center"><strong>No hay participantes con el cargo de '.$fu.' registradas en este proceso</strong></div>' ;
-                     
-                        }
+
 
                 ?>
             
             </div>
-
+                
             </div>       
         </div>
                 <div class="container" id="volver">     

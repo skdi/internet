@@ -182,7 +182,7 @@ require_once("..\..\clases/conexion/conexion.php");
         </div>
         <div class="row" id="tabla_ad">
                    <br>
-                    <table class="table table-striped">
+                    <table class="table table-striped table-bordered table-hover table-condensed">
                     <thead>
                     <tr>
                         <th>Dni</th>

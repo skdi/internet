@@ -150,7 +150,7 @@ require_once("..\clases/conexion/conexion.php");
                             </ul>
                     </div> 
                 </div>
-                <div class="col-sm-9 col-md-9"> <p>Se muestran todos los procesos ,se puede filtrar por año, seleccionar uno para ver el personal que ha trabajado en este y/o para realizar una busqueda personalizada para buscar a un docente o administrativo</p> </div>
+                <div class="col-sm-9 col-md-9"><p>Se muestran todos los procesos ,se puede filtrar por año, seleccionar uno para ver el personal que ha trabajado en este y/o para realizar una busqueda personalizada para buscar a un docente o administrativo</p> </div>
 
             </div>
 

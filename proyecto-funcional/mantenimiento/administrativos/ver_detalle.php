@@ -155,7 +155,7 @@ require_once("..\..\clases/conexion/conexion.php");
                    <br>
          <?php if($flag)
                 {?>
-            <table class="table">
+            <table class="table table-striped table-bordered table-hover table-condensed">
                 <thead>
             <tr>
             

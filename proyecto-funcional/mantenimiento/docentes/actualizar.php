@@ -163,7 +163,7 @@ require_once("..\..\clases/conexion/conexion.php");
               
             <div class="row" id="table_re">  <!--TABLA PARA LOS REGISTROS-->
                    <br>
-                    <table class="table table-striped">
+                    <table class="table table-striped table-bordered table-hover table-condensed">
                     <thead>
                     <tr>
                         <center><h1>Actualizar Administrativo</h1> </center>
@@ -180,7 +180,7 @@ require_once("..\..\clases/conexion/conexion.php");
                              
                                 <div class="container">
                                 <div class="table_re">
-                                <table class="table table-striped"> <!--TColumna 1 -->
+                                <table class="table table-striped table-bordered table-hover table-condensed"> <!--TColumna 1 -->
                                 <thead>
                                 <tr>
                                     <br>
@@ -230,7 +230,7 @@ require_once("..\..\clases/conexion/conexion.php");
                          <div class="col-xs-6">  <!--tamañño 2 -->
                             <div class="container">
                                 <div class="table_re">
-                                <table class="table table-striped"> <!--TColumna 2 -->
+                                <table class="table table-striped table-bordered table-hover table-condensed"> <!--TColumna 2 -->
                                 <thead>
                                 <tr>
                                     <br>

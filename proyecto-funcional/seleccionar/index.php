@@ -1,45 +1,26 @@
 <?php
 session_start();
 require_once("..\clases/conexion/conexion.php");
-require_once("class.php");
-    if(empty($_GET['id']))
-         $id=$_SESSION['id']; 
-    else
-    {
-        $_SESSION['id']=$_GET['id'];
-         $id=$_SESSION['id']; 
-        
-    }
+    $_SESSION['id']="0";
     $con=$conexion;
-    
-    $sql ="SELECT * FROM proceso WHERE (id_proceso='".$id."')";
-    $consulta = mysqli_query($con,$sql);
-    if ($result=mysqli_fetch_array($consulta))
-    {
-        
-        $nombre=$result['nombre'];
-        $fecha=$result['fecha'];
-    }
-    if(!empty($_GET['fu']))
-    {
-        $fu=$_GET['fu'];
-    }
-        
-?>
 
+?>
+<!-- SELECT * FROM `proceso` WHERE YEAR(fecha)= 2015 -->
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>SISTEMA DE PROCESOS DE ADMISION</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="css/style.css" rel="stylesheet" type="text/css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
 
     </head>
 
@@ -98,13 +79,13 @@ require_once("class.php");
                             <li>
                                 <a href="../mantenimiento/" ><span> MANTENIMIENTO </span></a>
                             </li>
-                            <li class="activado">
+                            <li >
                                 <a href="../visualizar/"><span> VISUALIZAR </span></a>
                             </li>
                             <li>
                                 <a href="#"><span> PREGUNTAS </span></a>
                             </li>
-                            <li>
+                            <li class="activado" >
                                 <a href="#"><span> ASIGNAR PERSONAL </span></a>
                             </li>
                             <li>
@@ -139,11 +120,9 @@ require_once("class.php");
        
                         
                     </div>
-                    <div class="col-sm-2">  </div>
-                     <div class="col-sm-9" align="left">   
-                            <h1>Proceso <?php echo $nombre; ?></h1>
-                            <h2>Fecha : <?php echo $fecha; ?></h2>
-                            <h3>Funcion: <?php echo $fu ;?></h3>
+                    <div class="col-sm-3">  </div>
+                     <div class="col-sm-6" align="left">   
+                            <h1>PROCESOS DE ADMISION</h1>
                     </div> 
 
 
@@ -154,83 +133,116 @@ require_once("class.php");
 
               
             
-            <div class="row" id="tabla_sel" >
-                            
-                    <div class="container">
-                        <p><span class="fa fa-info-circle"></span>
-                            Se muestran todos los datos de los participantes en la funcion de <?php echo $fu; ?> <span class="fa fa-keyboard-o"></span>
-                        </p>
+            <div class="row" id="m_tabla" >
+                               
+               
+                <div class="col-sm-3 col-md-3"> 
+                 <div class="btn-group">
+                        <button class="btn btn-primary " data-toggle="dropdown" id="boton">
+                            	  Filtrar por año <span class="caret"></span>
+                        </button>
+                                    <ul class="dropdown-menu" id="filtro">
+                                        <?php
+									       $query=mysqli_query($con,"SELECT DISTINCT YEAR(fecha) FROM proceso" );
+									       while($d=mysqli_fetch_array($query)){
+                                                    echo '<li><a href="index.php?fecha='.$d['YEAR(fecha)'].'">'.$d['YEAR(fecha)'].'</a></li>';	
+                                            }
+                                        ?>
+                                <li class="divider"></li>
+                                <li><a href="index.php?cargo=todos">Todas</a></li>
+                            </ul>
+                    </div> 
                 </div>
+                <div class="col-sm-9 col-md-9"> <p>Se muestran todos los procesos ,seleccione sobre cual desea asignar a los participantes</p> </div>
+
             </div>
+
+
+  
+       
                 
         
-  
-        <div class="row" id="tabla_a1">
+       
+        <div class="row" id="tabla_ad">
+       
             <div class="col-sm-12 col-md-12">
                 <br>
+                    <table class="table table-striped table-bordered table-hover table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Año</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        
+                        <th>Accion</th>
+                        
+                    </thead>
+                    <tbody>
                     <?php
-
-                          $sql="SELECT nombre,dni,apellido,tipo_nombre,estado,veces_participo,participacion FROM proceso_participante inner join (SELECT * from participante ) as A ON proceso_participante.id_participante= A.id_participante and id_proceso='$id' and participacion='$fu' " ;
-                        ?>
-                       <table class="table table-striped table-bordered table-hover table-condensed">
-                        <thead>
-                            <tr>
-                            <th>DNI</th>
-                            <th>NOMBRE</th>
-                            <th>APELLIDO</th>
-                            <th>ESTADO</th>
-                            <th>TIPO</th>   
-                            <th>VER</th>
-                            </tr>
-                        </thead>
-                            <tbody>
-                               <?php
-                                 $query=mysqli_query($conexion,$sql);
-                                 while($d=mysqli_fetch_array($query))
-                                 {
-                                     $o=$d['estado'];
-                                     if($o<>'a')
-                                        $esta="no activo";
-                                    else{
-                                        $esta="activo";
-                                
-                                }
-                                echo '<tr><td>'.$d['dni'].'</td><td>'.$d['apellido'].'</td><td>'.$d['nombre'].'</td><td>'.$esta.'</td><td>'.$d['tipo_nombre'].'</td><td><a href="ver_perfil.php?dni='.$d['dni'].'" class="btn btn-info"><span class="fa fa-address-book"></span> Ver Perfil</a></td>';
-                            }
-                       
-                       
-                        ?>
-
-                            </tbody>
-                        </table>
-                
-                <?php
-                        if(!mysqli_num_rows($query))
+                       if(empty($_GET['fecha'])){
+                           
+						      $sql="SELECT id_proceso,nombre,YEAR(fecha) FROM proceso ORDER BY fecha";
+                           
+					   }
+				        
+                      else
                         {
-                        echo '<div class="alert alert-info" align="center"><strong>No hay participantes con el cargo de '.$fu.' registradas en este proceso</strong></div>' ;
-                     
+					       $bus=$_GET['fecha'];
+					       if($bus<>"todas"){
+						          $sql="SELECT id_proceso,nombre,YEAR(fecha) FROM `proceso` WHERE YEAR(fecha)='$bus' ";
+					           }
+                           else{
+						          $sql="SELECTid_proceso,nombre,YEAR(fecha) FROM `proceso` ORDER BY fecha";
+					           }
+				        
                         }
+                     $query=mysqli_query($con,$sql);
 
-                ?>
+
+                        
+                        while($d=mysqli_fetch_array($query))               
+                             echo '<tr><td>'.$d['nombre'].'</td><td>'.$d['YEAR(fecha)'].'</td><td></td><td></td><td></td><td><a href="pro_sel.php?id='.$d['id_proceso'].'" class="btn btn-danger"><span class="fa fa-eye "></span> Asignar Participantes</a></td>';
+                            
+                       
+                       
+                        ?>
+
+                    
+                </tbody>
+                </table>
             
-            </div>
 
-            </div>       
+                <?php
+                 if(!mysqli_num_rows($query))
+                 {
+                     echo '<div class="alert alert-info" align="center"><strong>NO NAY PROCESOS REGISTRADOS</strong></div>' ;
+                     
+                 }
+                ?>
+                </div>
+            
+ 
         </div>
-                <div class="container" id="volver">     
-                <br><br><br>
-               <a href="pro_sel.php" class="btn btn-default btn-lg ">
-               <span class="fa fv"></span> Regresar
-                        </a>
-                        </div> 
-                 
-        </div><!-- pagina contenido -->
-          </div> 
-  
+                
                 
 
             <!-- Fin del contenido de la pagina-->
-
+                </div>
+                <div class="container" id="volver">     
+                <br><br><br>
+               <a href="../admin.html" class="btn btn-default btn-lg ">
+               <span class="fa fa-reply"></span> Volver a Inicio
+                        </a>
+                        </div> 
+        </div>
+        <script type="text/javascript" src="./jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="./bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="../js/locales/bootstrap-datetimepicker.es.js" charset="UTF-8"></script>
+        <script src="js/data-picker.js"></script>
+        
         <!-- Fin de la envoltura-->
     </body>
 </html>

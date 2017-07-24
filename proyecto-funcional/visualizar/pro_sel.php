@@ -191,7 +191,7 @@ require_once("class.php");
                            $dato=new Preguntas($id);
 						    ?>
                                 
-                    <table class="table table-striped">
+                    <table class="table table-striped table-bordered table-hover table-condensed">
                         <thead>
                             <tr>
                             <th>CARGO</th>
@@ -245,7 +245,7 @@ require_once("class.php");
                           $bus=$_POST['doc'];
                           $sql="SELECT nombre,dni,apellido,estado,veces_participo,participacion FROM proceso_participante inner join (SELECT * from participante where nombre LIKE '$bus%' or apellido LIKE '$bus%' or dni='$bus' ) as A ON proceso_participante.id_participante= A.id_participante and id_proceso='$id'";
                         ?>
-                       <table class="table table-striped">
+                       <table class="table table-striped table-bordered table-hover table-condensed">
                         <thead>
                             <tr>
                             <th>DNI</th>

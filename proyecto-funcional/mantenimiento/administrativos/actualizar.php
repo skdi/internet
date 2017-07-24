@@ -179,7 +179,7 @@ require_once("..\..\clases/conexion/conexion.php");
                              
                                 <div class="container">
                                 <div class="table_re">
-                                <table class="table table-striped"> <!--TColumna 1 -->
+                                <table class="table table-striped table-bordered table-hover table-condensed"> <!--TColumna 1 -->
                                 <thead>
                                 <tr>
                                     <br>
@@ -229,7 +229,7 @@ require_once("..\..\clases/conexion/conexion.php");
                          <div class="col-xs-6">  <!--tamañño 2 -->
                             <div class="container">
                                 <div class="table_re">
-                                <table class="table table-striped"> <!--TColumna 2 -->
+                                <table class="table table-striped table-bordered table-hover table-condensed"> <!--TColumna 2 -->
                                 <thead>
                                 <tr>
                                     <br>
@@ -271,9 +271,7 @@ require_once("..\..\clases/conexion/conexion.php");
                                                    
                                             <div class="col-sm-3 col-md-3">
                                                 <input type="submit" class="btn btn-success" value="Actualizar">
-                                                
-                                                </a>
-                                            
+
                                             </div>
                                             <div class="col-sm-6 col-md-6">
                                                 <a href="../administrativos/" class="btn btn-danger ">

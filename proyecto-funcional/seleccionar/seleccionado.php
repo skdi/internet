@@ -90,7 +90,7 @@ require_once("class.php");
                     <!--- DIVISOR -->
 
 
-                    <div id="menu-barra">
+                          <div id="menu-barra">
                         <ul>
                             <li>
                                 <a href="../" ><span> INICIO </span></a>
@@ -98,13 +98,13 @@ require_once("class.php");
                             <li>
                                 <a href="../mantenimiento/" ><span> MANTENIMIENTO </span></a>
                             </li>
-                            <li class="activado">
+                            <li >
                                 <a href="../visualizar/"><span> VISUALIZAR </span></a>
                             </li>
                             <li>
                                 <a href="#"><span> PREGUNTAS </span></a>
                             </li>
-                            <li>
+                            <li class="activado" >
                                 <a href="#"><span> ASIGNAR PERSONAL </span></a>
                             </li>
                             <li>
@@ -214,7 +214,7 @@ require_once("class.php");
                 ?>
             
             </div>
-
+                
             </div>       
         </div>
                 <div class="container" id="volver">     

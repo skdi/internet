@@ -83,22 +83,22 @@ require_once("..\clases/conexion/conexion.php");
 
 
 
-                    <div id="menu-barra" >
+                          <div id="menu-barra">
                         <ul>
                             <li>
-                                <a href="../../admin.html" ><span> INICIO </span></a>
+                                <a href="../" ><span> INICIO </span></a>
+                            </li>
+                            <li>
+                                <a href="../mantenimiento/" ><span> MANTENIMIENTO </span></a>
                             </li>
                             <li >
-                                <a href="../" ><span> MANTENIMIENTO </span></a>
+                                <a href="../visualizar/"><span> VISUALIZAR </span></a>
+                            </li>
+                            <li>
+                                <a href="#"><span> PREGUNTAS </span></a>
                             </li>
                             <li class="activado" >
-                                <a href="#"><span> VISUALIZAR </span></a>
-                            </li>
-                            <li>
-                                <a href="#"><span> SELECCIONAR PREGUNTAS</span></a>
-                            </li>
-                            <li>
-                                <a href="#"><span> SELECCIONAR PROCESO </span></a>
+                                <a href="#"><span> ASIGNAR PERSONAL </span></a>
                             </li>
                             <li>
                                 <a href="#"><span> IMPORTAR DATOS </span></a>
@@ -112,7 +112,7 @@ require_once("..\clases/conexion/conexion.php");
 
                         </ul>
                     </div>
-                  
+                    
                     <div class="clearfix"></div>
                 </div> <!-- MENU INTERIOR -->
             </div>
@@ -226,7 +226,7 @@ require_once("..\clases/conexion/conexion.php");
                 var ctx4 = document.getElementById("chart-area4").getContext("2d");
         
             var lineChartData = {
-			labels : [
+			labels : [0,
                 <?php 
                     $i=$desde;
                     while($i<=$hasta)
@@ -241,13 +241,15 @@ require_once("..\clases/conexion/conexion.php");
             ],
 			datasets : [
 				{
-					label: "Asistencia durante los años",
-					fillColor : "rgba(54,132,220,1)",
-					strokeColor : "#057EE3",
-					highlightFill: "rgba(9,66,131,0.6)",
-					highlightStroke: "rgba(66,196,157,0.7)",
-					data : [
-
+					label: "Primera serie de datos",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "#6b9dfa",
+					pointColor : "#1e45d7",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [0,
+ 
                    
                     <?php 
                         $sql="select COUNT(*) from proceso_participante inner join (SELECT * from proceso where YEAR(fecha) BETWEEN '$desde' And '$hasta' ) as B on proceso_participante.id_proceso=B.id_proceso and proceso_participante.id_participante='$id_par'";
@@ -268,7 +270,7 @@ require_once("..\clases/conexion/conexion.php");
             }
 
 
-            window.myPie = new Chart(ctx4).Bar(lineChartData, {responsive:true});
+            window.myPie = new Chart(ctx4).Line(lineChartData, {responsive:true});
 
                 
             }
