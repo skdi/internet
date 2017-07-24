@@ -28,13 +28,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-</head>
-<body>
-<form action="correo.php" method="post">
-	<input type="text" name="asunto"/><br /><br />
-	<textarea name="mensaje"></textarea><br /><br />
-	<input type="submit" value="Enviar Correo">
-</form>
+<meta http-equiv="refresh"  content="5">
+<style type="text/css">
 
-</body>
+		#caja{
+			background:#CACFD2;
+			width:250px;
+			border:1px solit white;
+			margin :200px auto;
+			padding:1em;
+			border-radius:8px;
+		}
+		h1,h2,h3,h4{
+			front-family:arial;
+			color:#0080ff;
+		}
+        	body{
+		background: url(img/fondo2.jpg) no-repeat fixed center center #333;
+		background-size: cover;
+    }
+</style>
+</head>
+<div id="caja">
+	<body>
+	<h3>
+	<form action="correo.php" method="post">
+		<input name="reseptor" value="submit"  type="hidden">Para:<br>
+		<input name="asunto"  placeholder="E-mail" size="30" type="text"><br> Agregar Asunto:<br>
+		<input name="mensaje"  placeholder="Asunto" size="30" type="text"><br> Mensaje:<br>
+		<textarea name="mensaje" rows="7" cols="30">
+		</textarea><br>
+		<input value="Enviar" type="submit">
+	</form>
+	<h3>
+	</body>
+</div>
 </html>
+
