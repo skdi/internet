@@ -1,44 +1,35 @@
 <?php
-require_once("participante.php");
+require_once("escuela.php");
 session_start();
 
-$id =$_POST['id_participante'];
+$id =$_POST['id_escuela'];
 $_SESSION['id']=$id;    
-$id_detalle=$_POST['id_detalle'];
 
-$dni= $_POST['dni'];
-$nombre= $_POST['nom'];
-$apellido= $_POST['apll'];
-$correo= $_POST['correo'];
-$telefono= $_POST['telf'];
-$participacion= $_POST['participacion'];
-$veces=$_POST['veces'];
-$estado=$_POST['estado'];
+$nombre_area= $_POST['nombre_area'];
+$nombre= $_POST['nombre'];
 
 $categoria=$_POST['categoria'];
-$fc=$_POST['fc'];
-$regi=$_POST['regi'];
-
+/*
     if($id_detalle<>"noseusa")
     {
-        $sql="UPDATE detalle_participante set facultad='$fc', regimen='$regi', dependencia='',id_participante='$id',categoria='$categoria' where id_detalle_participante = $id_detalle";
+        $sql="UPDATE detalle_participante set facultad='$fc', regimen='$regi', dependencia='',id_escuela='$id',categoria='$categoria' where id_detalle_participante = $id_detalle";
 
     }
     else
     {
 
-         $sql="INSERT INTO detalle_participante (facultad,regimen,dependencia,id_participante,categoria) VALUES ('$fc','$regi','','$id','$categoria')";
+         $sql="INSERT INTO detalle_participante (facultad,regimen,dependencia,id_escuela,categoria) VALUES ('$fc','$regi','','$id','$categoria')";
 
 
-    }
+    }*/
     $enlace= new conectar();
     $conexion= $enlace->conexion;
 
     $resultado1=mysqli_query($conexion,$sql);
-    $participante= new participante($id,$dni,$nombre,$apellido,$telefono,$correo,'Docente',$veces,$participacion,$estado);
+    $escuela= new escuela($id,$nombre_area,$nombre);
     
     
-    if( $resultado=$participante->actualizar() and $resultado1)
+    if( $resultado=$escuela->actualizar() and $resultado1)
     {
         $_SESSION['ejecuto']=TRUE;
         header("location:../actualizar.php" );
@@ -53,3 +44,4 @@ else
 
 
 ?>
+
