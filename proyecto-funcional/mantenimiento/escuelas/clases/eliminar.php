@@ -1,10 +1,10 @@
 <?php
 
-require_once("participante.php");
+require_once("escuela.php");
  
- $id_participante = $_GET['id'];
- $participante= new eliminar($id_participante);
- if($participante->eliminar_participante())
+ $id_escuela = $_GET['id'];
+ $escuela= new eliminar($id_escuela);
+ if($escuela->eliminar_escuela())
  {
      $_SESSION['ejecuto']=TRUE;
      header("location:../");
