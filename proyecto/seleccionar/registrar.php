@@ -12,8 +12,19 @@ $escuela= $_POST['escuela'];
 $area= $_POST['area'];
 $id_proceso=$_POST['id_proceso'];
 
-
 $sql="INSERT INTO proceso_participante (id_proceso,id_participante,area,id_aula,id_escuela,participacion) VALUES ('$id_proceso','$id_participante','$area','$aula','$escuela','$funcion')";
+
+if($aula==="")
+{
+    $sql="INSERT INTO proceso_participante (id_proceso,id_participante,area,id_escuela,participacion) VALUES ('$id_proceso','$id_participante','$area','$escuela','$funcion')";
+}
+
+if($escuela=="")
+{
+    $sql="INSERT INTO proceso_participante (id_proceso,id_participante,area,participacion) VALUES ('$id_proceso','$id_participante','$area','$funcion')";
+}
+
+
 
 
 $resultado1=mysqli_query($conexion,$sql)or die("Error en: $sql: " . mysqli_error()); 
@@ -30,4 +41,5 @@ else
 }
 
 ?>
+
 
