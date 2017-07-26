@@ -12,22 +12,16 @@ require_once("..\..\clases/conexion/conexion.php");
         $id=$_GET["id"];
     }
     
-    $sql ="SELECT * FROM participante WHERE (id_participante='".$id."')";
+    $sql ="SELECT * FROM escuela WHERE (id_escuela='".$id."')";
     $consulta = mysqli_query($con,$sql);
     if ($result=mysqli_fetch_array($consulta))
     {
-        $dni=$result['dni'];
+        $area_nombre=$result['area_nombre'];
         $nombre=$result['nombre'];
-        $apellido=$result['apellido'];
-        $telefono=$result['telefono'];
-        $correo=$result['correo'];
-        $tipo_nombre=$result['telefono'];
-        $veces_part=$result['veces_participo'];
-        $tipo_participacion=$result['tipo_participacion'];
-        $estado=$result['estado'];
+        
     }
    
-    $sql= "SELECT * from detalle_participante WHERE (id_participante='".$id."')";
+    $sql= "SELECT * from detalle_participante WHERE (id_escuela='".$id."')";
     $consulta = mysqli_query($con,$sql);
     if ($result=mysqli_fetch_array($consulta))
     {
@@ -156,7 +150,7 @@ require_once("..\..\clases/conexion/conexion.php");
          <div class="container">
           <form action="clases/actualizar.php" method="post">
               
-              <input type="hidden" name="id_participante" value="<?php echo $id ?>" />
+              <input type="hidden" name="id_escuela" value="<?php echo $id ?>" />
               <input type="hidden" name="veces" value="<?php echo $veces_part ?>" />
               <input type="hidden" name="estado" value="<?php echo $estado ?>" />
               <input type="hidden" name="id_detalle" value="<?php echo $id_detalle ?>" />
@@ -193,26 +187,9 @@ require_once("..\..\clases/conexion/conexion.php");
                                         <div class="form-group row"> 
                                             <br>
                                             <div class="col-xs-9">
-                                                <label for="dni">DNI :</label>
-                                                <input class="form-control" value="<?php echo $dni ;?>" id="dni" name="dni" type="text" required>
-                                            </div>
-                                            <div class="col-xs-9">
-                                                <label for="apll">Apellidos :</label>
-                                                <input class="form-control" id="apll"  value="<?php echo $apellido; ?>" name="apll" type="text" required>
-                                            </div>
-
-                                            <div class="col-xs-9">
                                                 <label for="nom">Nombres :</label>
-                                                <input class="form-control" id="nom" value="<?php echo $nombre ;?>" name="nom" type="text" required>
+                                                <input class="form-control" id="nombre" value="<?php echo $nombre ;?>" name="nom" type="text" required>
                                             </div>
-                                            <div class="col-xs-9">
-                                                <label for="telf">Telefono :</label>
-                                                <input class="form-control" id="telf" value="<?php echo $telefono; ?>" name="telf" type="text" >
-                                            </div>
-                                            <div class="col-xs-9">
-                                            <label for="correo">Correo :</label>
-                                            <input class="form-control" id="correo" value="<?php echo $correo; ?>" name="correo" type="text" required>
-                                            </div> 
 
                                   <div class="col-xs-12">
                                 </div>
@@ -234,7 +211,7 @@ require_once("..\..\clases/conexion/conexion.php");
                                 <thead>
                                 <tr>
                                     <br>
-                                    DETALLES PERSONA
+                                    DATOS PARTICULARES
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -243,26 +220,9 @@ require_once("..\..\clases/conexion/conexion.php");
                                      <div class="form-group row">
                                       <br>
                                       <div class="col-xs-9">
-                                        <label for="dep">Facultad :</label>
-                                        <input class="form-control" id="fac" name="fc" type="text"value="<?php echo $facultad ;?>">
-                                      </div>
-                                      <div class="col-xs-9">
-                                        <label for="dep">Regimen :</label>
-                                        <input class="form-control" id="reg" name="regi" type="text"value="<?php echo $regimen ;?>">
-                                      </div>
-                                      <div class="col-xs-9">
-                                        <label for="t_p">Cargo :</label>
-                                        <select class="form-control" id="t_p" name="participacion">
-                                            <option selected="selected">
-                                                <?php echo $tipo_participacion; ?>
-                                            </option>
-                                         <?php
-									       $query=mysqli_query($con,"SELECT * FROM tipo_participacion");
-									       while($d=mysqli_fetch_array($query)){
-                                                    echo '<option value='.$d['nombre'].'>'.$d['nombre'].'</option>';
-                                            }
-                                          ?>
-                                        
+                                        <label for="dep">AREA :</label>
+                                        <input class="form-control" id="area" name="fc" type="text"value="<?php echo $AREA ;?>">
+                                      </div>                                        
                                         </select>
                                       </div>
                                       <div class="col-xs-9">
@@ -281,7 +241,7 @@ require_once("..\..\clases/conexion/conexion.php");
                                             
                                             </div>
                                             <div class="col-sm-6 col-md-6">
-                                                <a href="../docentes/" class="btn btn-danger ">
+                                                <a href="../escuela/" class="btn btn-danger ">
                                                 <span class="fa fa-sign-out"></span> Volver
                                                 </a>
                                             
@@ -321,7 +281,7 @@ if($flag)
 
 if($_SESSION['error']===TRUE)
 {
-    echo '<div class="alert alert-danger" align="center"><strong>Administrativo no actualizado !!! , Posible DNI duplicado</strong></div>' ;
+    echo '<div class="alert alert-danger" align="center"><strong>Administrativo no actualizado !!! , Posible area_nombre duplicado</strong></div>' ;
 
 }
 
