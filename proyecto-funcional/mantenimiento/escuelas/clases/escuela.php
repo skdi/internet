@@ -31,15 +31,15 @@ class escuela
     
 
 	var $id_escuela;				    
-    var $nombre_area;
+    var $area_nombre;
 	var $nombre;		
     var $conexion;
 		
 	
-    function __construct($id,$nombre_area,$nombre)
+    function __construct($id,$area_nombre,$nombre)
     {
 		$this->id_escuela=$id;
-        $this->nombre_area=$nombre_area;
+        $this->area_nombre=$area_nombre;
         $this->nombre=$nombre;
         
         $enlace= new conectar();
@@ -50,11 +50,11 @@ class escuela
 	function crear()
     {
 		$id=$this->id_escuela;
-        $nombre_area=$this->nombre_area;
+        $area_nombre=$this->area_nombre;
         $nombre=$this->nombre;
     // 
-		return $resultado=mysqli_query($this->conexion,"INSERT INTO escuela (nombre,nombre_area) 
-				VALUES ('$nombre','$nombre_area')");
+		return $resultado=mysqli_query($this->conexion,"INSERT INTO escuela (nombre,area_nombre) 
+				VALUES ('$nombre','$area_nombre')");
         
 
 	    }
@@ -63,9 +63,9 @@ class escuela
     {
         $id=$this->id_escuela;
         $nombre=$this->nombre;
-        $nombre_area=$this->nombre_area;
+        $area_nombre=$this->area_nombre;
 		
-		return $resultado =mysqli_query($this->conexion,"Update escuela Set	nombre='$nombre',nombre_area='$nombre_area' where id_escuela=$id");
+		return $resultado =mysqli_query($this->conexion,"Update escuela Set	nombre='$nombre',area_nombre='$area_nombre' where id_escuela=$id");
 
 	}
    
