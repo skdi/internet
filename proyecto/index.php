@@ -94,7 +94,7 @@
                                 <a href="#"><span> EXPORTAR SELECCION</span></a>
                             </li>
                             <li>
-                                <a href="index."><span> SALIR </span></a>
+                                <a href="logout.php"><span> SALIR </span></a>
                             </li>
 
                         </ul>
