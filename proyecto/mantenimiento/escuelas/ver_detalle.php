@@ -1,28 +1,27 @@
 <?php
 session_start();
 
-require_once("../../clases/conexion/conexion.php");
+require_once("..\..\clases/conexion/conexion.php");
     $con=$conexion;
     $id=$_GET['id'];
-    $sql ="SELECT nombre,apellido,estado from participante WHERE (id_participante='".$id."')";
+    $sql ="SELECT nombre,nombre_area from escuela WHERE (id_escuela='".$id."')";
     $consulta = mysqli_query($con,$sql);
     if ($result=mysqli_fetch_array($consulta))
     {
 
         $nombre=$result['nombre'];
-        $apellido=$result['apellido'];
-        $estado=$result['estado'];
-
+        $nombre_area=$result['nombre_area'];
     }
 
-    $sql= "SELECT * from detalle_participante WHERE (id_participante='".$id."')";
+    $sql= "SELECT * from escuela WHERE (id_escuela='".$id."')";
     $consulta = mysqli_query($con,$sql);
 
     if($resultado=mysqli_fetch_array($consulta))
     {
            $flag=TRUE;
             $categoria=$resultado['categoria'];
-            $dependencia=$resultado['dependencia'];
+            $facultad=$resultado['facultad'];
+            $regimen=$resultado['regimen'];
 
 
     }
@@ -50,7 +49,7 @@ require_once("../../clases/conexion/conexion.php");
     <body class="fixed-left">
 
               <!-- COMIENZO DE PAGINA -->
-           <div id="envoltura">
+        <div id="envoltura">
 
             <!-- COMIENZO DE BARRA TOP -->
             <div class="barra-top">
@@ -93,7 +92,7 @@ require_once("../../clases/conexion/conexion.php");
 
 
 
-                  <div id="menu-barra">
+                   <div id="menu-barra">
                         <ul>
                             <li >
                                 <a href="../../admin.html" ><span> INICIO </span></a>
@@ -126,9 +125,15 @@ require_once("../../clases/conexion/conexion.php");
                     <div class="clearfix"></div>
                 </div> <!-- MENU INTERIOR -->
             </div>
+            <!-- MENU IZQUIERDA -->
 
+
+            <!-- CONTENIDO AQUI -->
         </div>
+            <!-- MENU IZQUIERDA -->
 
+
+            <!-- CONTENIDO AQUI -->
 
             <div class="pagina-contenido">
                 <!-- Contenido -->
@@ -145,7 +150,7 @@ require_once("../../clases/conexion/conexion.php");
                             
                 <div class="col-sm-3 col-md-3"></div>
                 <div class="col-sm-3 col-md-3"></div>
-                <div class="col-sm-3-col-md-3"><h1>Detalle de <?php  echo "<strong>$nombre $apellido</strong>";?> </h1></div>           
+                <div class="col-sm-3-col-md-3"><h1>Detalle de <?php  echo "<strong>$nombre $nombre_area</strong>";?> </h1></div>           
                 <div class="col-sm-4 col-md-4"></div>
 
         
@@ -166,13 +171,18 @@ require_once("../../clases/conexion/conexion.php");
                     <tbody>
 
                     <tr>
-                    <th scope="row">DEPENDENCIA</th>
-                     <td><?php echo $dependencia ;?></td>
+                    <th scope="row">FACULTAD</th>
+                     <td><?php echo $facultad ;?></td>
 
                     </tr>
                     <tr>
                     <th scope="row">CATEGORIA</th>
                      <td><?php echo $categoria; ?></td>
+
+                    </tr>
+                    <tr>
+                    <th scope="row">REGIMEN</th>
+                     <td><?php echo $regimen; ?></td>
 
                     </tr>
                     </tbody>
@@ -183,7 +193,7 @@ require_once("../../clases/conexion/conexion.php");
             ?>
             <div class="container">     
 
-                <div class="col-sm-12"align="left" ><a href="../administrativos/" class="btn btn-danger ">
+                <div class="col-sm-12"align="left" ><a href="../docentes/" class="btn btn-danger ">
                                                 <span class="fa fa-sign-out"></span> Volver
                                                 </a></div>   
             </div>

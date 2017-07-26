@@ -64,12 +64,12 @@
                     <!--- DIVISOR -->
 
 
-                   <div id="menu-barra">
+                    <div id="menu-barra">
                         <ul>
                             <li >
                                 <a href="../admin.html" ><span> INICIO </span></a>
                             </li>
-                            <li class="activado" >
+                            <li class="activado">
                                 <a href="../mantenimiento" ><span> MANTENIMIENTO </span></a>
                             </li>
                             <li>
@@ -79,13 +79,16 @@
                                 <a href="../preguntas"><span> REGISTRAR PREGUNTAS</span></a>
                             </li>
                             <li>
-                                <a href="../seleccionar"><span> ASIGNAR PERSONAL </span></a>
+                                <a href="../seleccionar/"><span> ASIGNAR PERSONAL </span></a>
                             </li>
                             <li>
-                                <a href="../historial"><span> HISTORIAL GRAFICO </span></a>
+                                <a href="#"><span> IMPORTAR DATOS </span></a>
                             </li>
                             <li>
-                                  <a href="../"><span> SALIR </span></a>
+                                <a href="#"><span> EXPORTAR SELECCION</span></a>
+                            </li>
+                            <li>
+                                <a href="#"><span> SALIR </span></a>
                             </li>
 
                         </ul>
@@ -123,13 +126,25 @@
                                         
                                     </a>
                                 </div>
-                        
-                    </div>
-                    
-                    
+                        <div class="col-sm-12 col-md-6"></div>
+                        <div class="col-sm-6 col-md-6">
+                                <a href="escuelas/" class="thumbnail">
+                                    <center><h3>Escuelas</h3>     </center>
+                                    <img src="img/escuelas.jpg" alt="..." class="img-rounded">
+                                        
+                                </a>
+                         </div>
+                        <div class="col-sm-6 col-md-6">
+                                <a href="areas/" class="thumbnail">
+                                    <center><h3>Areas</h3>     </center>
+                                    <img src="img/escuelas.jpg" alt="..." class="img-rounded">
+                                        
+                                </a>
+                         </div>
                     </div>
 
-
+                    
+                </div>
                 
 
             </div>

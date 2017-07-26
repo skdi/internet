@@ -126,7 +126,7 @@ require_once("../../clases/conexion/conexion.php");
                         
                     <div class="col-sm-3">  </div>
                      <div class="col-sm-6" align="left">   
-                            <h1>LISTADO DE DOCENTES</h1>
+                            <h1>LISTADO DE ESCUELAS</h1>
                     </div> 
 
 
@@ -142,7 +142,7 @@ require_once("../../clases/conexion/conexion.php");
                             
                     <div class="col-sm-3 col-md-3">
                                     <a href="crear.php" class="btn btn-success ">
-                                        <span class="fa fa-plus"></span> INGRESAR NUEVO DOCENTE
+                                        <span class="fa fa-plus"></span> INGRESAR NUEVA ESCUELA
                                             </a>
                                     
                     </div>
@@ -151,30 +151,22 @@ require_once("../../clases/conexion/conexion.php");
                     <div class="col-sm-3 col-md-3">
                              <div class="btn-group">
                                 <button class="btn btn-primary " data-toggle="dropdown" id="boton">
-                            	  Filtrar por cargo <span class="caret"></span>
+                                  Filtrar por Area <span class="caret"></span>
                                 </button>
                                     <ul class="dropdown-menu" id="filtro">
                                         <?php
-									       $query=mysqli_query($con,"SELECT * FROM tipo_participacion ");
-									       while($d=mysqli_fetch_array($query)){
-                                                    echo '<li><a href="index.php?cargo='.$d['nombre'].'">'.$d['nombre'].'</a></li>';	
+                                           $query=mysqli_query($con,"SELECT * FROM area ");
+                                           while($d=mysqli_fetch_array($query)){
+                                                    echo '<li><a href="index.php?area='.$d['nombre'].'">'.$d['nombre'].'</a></li>'; 
                                             }
                                         ?>
                                         <li class="divider"></li>
-                                        <li><a href="index.php?cargo=todos">Todos</a></li>
+                                        <li><a href="index.php?area=todos">Todos</a></li>
                                     </ul>
                                 </div> 
                             </div>
-                    <div class="col-sm-4 col-md-4">
-                            <form name="form1" method="post" action="index.php">
-                              <div class="input-group">
-                                    <input type="text" class="form-control" name= "busqueda" placeholder="Buscar por Nombres / Apellidos / DNI" aria-describedby="basic-addon2">
-                                    <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-search"></span>
-                              </div>
-                               
-                            </form> 
-                            </form> 
-                            </div>
+                    </div>
+
                 
         
         </div>
@@ -183,60 +175,39 @@ require_once("../../clases/conexion/conexion.php");
                     <table class="table table-striped table-bordered table-hover table-condensed">
                     <thead>
                     <tr>
-                        <th>Dni</th>
-                        <th>Apellido</th>
                         <th>Nombre</th>
-                        <th>Telefono</th>
-                        <th>Correo</th>
-                        <th>Cargo</th>
-                        <th>Estado</th>
-                        <th>Ver detalle</th>
+                        <th>Area</th>
                         <th>Actualizar</th>
                         <th>Eliminar</th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
-                       if(empty($_GET['cargo'])){
-					   if(empty($_POST['busqueda']))
+                       if(empty($_GET['area']))
                        {
-						  $sql="SELECT * FROM participante WHERE tipo_nombre='Docente' ORDER BY apellido ";
-					   }else{
-						      $bus=$_POST['busqueda'];
-						      $sql="SELECT * FROM participante WHERE nombre LIKE '$bus%' or apellido LIKE '$bus%' or dni='$bus' AND tipo_nombre='Docente' ORDER BY apellido";
-					       }
-				        }
-                        else
+                            $sql="SELECT * FROM escuela ORDER BY area_nombre";
+                       }                         
+                       else
                         {
-					       $bus=$_GET['cargo'];
-					       if($bus<>"todos"){
-						          $sql="SELECT * FROM participante WHERE tipo_participacion='$bus' AND tipo_nombre='Docente' ORDER BY apellido";
-					           }
+                           $bus=$_GET['area'];
+                           if($bus<>"todos"){
+                                  $sql="SELECT * FROM escuela WHERE area_nombre='$bus' ORDER BY area_nombre";
+                               }
                            else{
-						          $sql="SELECT * FROM participante WHERE tipo_nombre='Docente' ORDER BY apellido";
-					           }
-				        
+                                  $sql="SELECT * FROM escuela ORDER BY area_nombre";
+                               }
+                        
                         }
                        
                        $query=mysqli_query($con,$sql);
-
-
+                       while($d=mysqli_fetch_array($query))
+                       {
+                        echo '<tr><td>'.$d['nombre'].'</td><td>'.$d['area_nombre'].'</td><td>
+                             <a href="actualizar.php?id='.$d['id_escuela'].'" class="btn btn-primary"><span class="fa fa-edit "></span> Editar </a></td>
+                             <td><a href="clases/eliminar.php?id='.$d['id_escuela'].'" class="btn btn-danger"><span class="fa fa-trash "></span>Eliminar </a></td>';
                         
-                        while($d=mysqli_fetch_array($query))
-                            {
-                                $o=$d['estado'];
-                                if($o<>'a')
-                                    $esta="no activo";
-                                else{
-                                    $esta="activo";
-                                
-                            }
-                             echo '<tr><td>'.$d['dni'].'</td><td>'.$d['apellido'].'</td><td>'.$d['nombre'].'</td><td>'.$d['telefono'].'</td><td>'.$d['correo'].'</td><td>'.$d['tipo_participacion'].'</td><td>'.$esta.'</td>
-                             <td><a href="ver_detalle.php?id='.$d['id_participante'].'" class="btn btn-info"><span class="fa fa-address-book"></span> Detalle </a></td><td><a href="actualizar.php?id='.$d['id_participante'].'" class="btn btn-primary"><span class="fa fa-edit "></span> Editar </a></td>
-                             <td><a href="clases/eliminar.php?id='.$d['id_participante'].'" class="btn btn-danger"><span class="fa fa-trash "></span>Eliminar </a></td>';
-                            }
-                       
-                       
+                       }
+                                                    
                         ?>
 
                     
@@ -245,7 +216,7 @@ require_once("../../clases/conexion/conexion.php");
                 <?php
                  if(!mysqli_num_rows($query))
                  {
-                     echo '<div class="alert alert-info" align="center"><strong>No hay Docentes Registrados</strong></div>' ;
+                     echo '<div class="alert alert-info" align="center"><strong>No hay Escuelas Registradas</strong></div>' ;
                      
                  }
                 ?>
@@ -255,7 +226,7 @@ require_once("../../clases/conexion/conexion.php");
 
         </div> 
 
-
+        </div>
 
             <!-- Fin del contenido de la pagina-->
 

@@ -154,7 +154,6 @@
     <title>PROCESO ADMISION</title>
 </head>
 <body>
-
   <div class="wrapper">
     <form action="validacion.php" class="form-signin" method="post" id="FormRegistro" >       
       <h2 class="form-signin-heading">INGRESAR</h2>
@@ -164,7 +163,6 @@
       <button class="btn btn-lg btn-primary btn-block" type="submit">Ingresar</button>   
     </form>
   </div>
-
     
 </body>
 </html>-->

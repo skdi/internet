@@ -1,33 +1,8 @@
 <?php
 session_start();
-
 require_once("../../clases/conexion/conexion.php");
+    $_SESSION['id']="0";
     $con=$conexion;
-    $id=$_GET['id'];
-    $sql ="SELECT nombre,apellido,estado from participante WHERE (id_participante='".$id."')";
-    $consulta = mysqli_query($con,$sql);
-    if ($result=mysqli_fetch_array($consulta))
-    {
-
-        $nombre=$result['nombre'];
-        $apellido=$result['apellido'];
-        $estado=$result['estado'];
-
-    }
-
-    $sql= "SELECT * from detalle_participante WHERE (id_participante='".$id."')";
-    $consulta = mysqli_query($con,$sql);
-
-    if($resultado=mysqli_fetch_array($consulta))
-    {
-           $flag=TRUE;
-            $categoria=$resultado['categoria'];
-            $dependencia=$resultado['dependencia'];
-
-
-    }
-    else
-        $flag=FALSE;
 
 
 ?>
@@ -46,11 +21,10 @@ require_once("../../clases/conexion/conexion.php");
         
     </head>
 
-
     <body class="fixed-left">
 
               <!-- COMIENZO DE PAGINA -->
-           <div id="envoltura">
+        <div id="envoltura">
 
             <!-- COMIENZO DE BARRA TOP -->
             <div class="barra-top">
@@ -93,7 +67,7 @@ require_once("../../clases/conexion/conexion.php");
 
 
 
-                  <div id="menu-barra">
+                    <div id="menu-barra">
                         <ul>
                             <li >
                                 <a href="../../admin.html" ><span> INICIO </span></a>
@@ -114,7 +88,7 @@ require_once("../../clases/conexion/conexion.php");
                                 <a href="#"><span> IMPORTAR DATOS </span></a>
                             </li>
                             <li>
-                                <a href="#"><span> EXPORTAR SELECCION</span></a>
+                                <a href="../../exportar"><span> EXPORTAR SELECCION</span></a>
                             </li>
                             <li>
                                 <a href="#"><span> SALIR </span></a>
@@ -126,73 +100,123 @@ require_once("../../clases/conexion/conexion.php");
                     <div class="clearfix"></div>
                 </div> <!-- MENU INTERIOR -->
             </div>
+            <!-- MENU IZQUIERDA -->
 
+
+            <!-- CONTENIDO AQUI -->
         </div>
+            <!-- MENU IZQUIERDA -->
 
+
+            <!-- CONTENIDO AQUI -->
 
             <div class="pagina-contenido">
                 <!-- Contenido -->
                
                 <div class="contenido">
-                      
-    
+                    <div class="row">
+                        
+                   
+                    <div class="col-sm-1">    
+                    <div class="container">
+                       <a href="../" class="btn btn-default btn-lg ">
+                        <span class="fa fa-reply"></span> Volver
+                        </a>
+                        
+                    </div>       
+                        
+                    </div>
+                    <div class="col-sm-2">  </div>
+                     <div class="col-sm-6" align="left">   
+                            <h1>LISTADO DE AREAS</h1>
+                    </div> 
+
+
+                    </div>
+                   
                 </div><!-- contenedor -->
              <div class="container">
+
               
             
-            <div class="row" id="tabla_detalle" >
+            <div class="row" id="m_tabla" >
                             
                             
-                <div class="col-sm-3 col-md-3"></div>
-                <div class="col-sm-3 col-md-3"></div>
-                <div class="col-sm-3-col-md-3"><h1>Detalle de <?php  echo "<strong>$nombre $apellido</strong>";?> </h1></div>           
-                <div class="col-sm-4 col-md-4"></div>
-
+                    <div class="col-sm-3 col-md-3">
+                                    <a href="crear.php" class="btn btn-success ">
+                                        <span class="fa fa-plus"></span> INGRESAR NUEVA AREA
+                                            </a>
+                                    
+                    </div>
+                    <div class="col-sm-1 col-md-1"></div>
+                    <div class="col-sm-1 col md-1"></div>
+                    <div class="col-sm-3 col-md-3">
+                            <a href="../escuela" class="btn btn-success ">
+                                <span class="fa fa-plus"></span> EDITAR ESCUELAS
+                            </a>
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                            <form name="form1" method="post" action="index.php">
+                              <div class="input-group">
+                                    <input type="text" class="form-control" name= "busqueda" placeholder="Buscar por Nombre" aria-describedby="basic-addon2">
+                                    <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-search"></span>
+                              </div>
+                            </form> 
+                    </div>
+                
         
         </div>
-                 
-        <div class="row" id="detalle">
+        <div class="row" id="tabla_ad">
                    <br>
-         <?php if($flag)
-                {?>
-            <table class="table table-striped table-bordered table-hover table-condensed">
-                <thead>
-            <tr>
-            
-                <th>Campo</th>
-                <th>Dato</th>
-            </tr>
+                    <table class="table table-striped table-bordered table-hover table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Actualizar</th>
+                        <th>Eliminar</th>
+                    </tr>
                     </thead>
                     <tbody>
+                    <?php
+					   if(empty($_POST['busqueda']))
+                       {
+						  $sql="SELECT * FROM area ";
+					   }else{
+						  $bus=$_POST['busqueda'];
+						  $sql="SELECT * FROM area WHERE nombre LIKE '$bus%' ";
+					   }
+                       
+                       $query=mysqli_query($con,$sql);
 
-                    <tr>
-                    <th scope="row">DEPENDENCIA</th>
-                     <td><?php echo $dependencia ;?></td>
+                        while($d=mysqli_fetch_array($query))
+                            {
+                             echo '<tr><td>'.$d['nombre'].'</td><td><a href="actualizar.php?id='.$d['nombre'].'" class="btn btn-primary"><span class="fa fa-edit "></span> Editar </a></td>
+                             <td><a href="clases/eliminar.php?id='.$d['nombre'].'" class="btn btn-danger"><span class="fa fa-trash "></span>Eliminar </a></td>';
+                            }
+                    ?>
 
-                    </tr>
-                    <tr>
-                    <th scope="row">CATEGORIA</th>
-                     <td><?php echo $categoria; ?></td>
+                    
+                </tbody>
+                </table>
+            
 
-                    </tr>
-                    </tbody>
-                    </table>
-            <?php }
-            else 
-                echo '<div class="alert alert-danger" align="center"><strong>No Tiene detalle</strong></div>' ;
-            ?>
-            <div class="container">     
+                <?php
+                 if(!mysqli_num_rows($query))
+                 {
+                     echo '<div class="alert alert-info" align="center"><strong>No hay Areas Registradas</strong></div>' ;
+                     
+                 }
+                ?>
+                </div>
 
-                <div class="col-sm-12"align="left" ><a href="../administrativos/" class="btn btn-danger ">
-                                                <span class="fa fa-sign-out"></span> Volver
-                                                </a></div>   
             </div>
-            <br>
-            </div>
+                
 
-            </div> <!-- pagina contenido -->
+             
+                    <!-- pagina contenido -->
+
         </div> 
-              
+
 
 
             <!-- Fin del contenido de la pagina-->

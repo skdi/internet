@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("..\clases/conexion/conexion.php");
+require_once("../clases/conexion/conexion.php");
 
     if(empty($_GET['id']))
          $id=$_SESSION['id']; 
@@ -22,6 +22,16 @@ require_once("..\clases/conexion/conexion.php");
     }
     $query = "SELECT nombre FROM area ORDER BY nombre";
 	$resultado=mysqli_query($con,$query);
+    $estado="";
+    $area="";
+    if(!empty($_POST['estado']))
+    {
+        $estado=$_POST['estado'];
+    }
+    if(!empty($_POST['area']))
+    {
+        $area=$_POST['area'];
+    }
 
 ?>
 
@@ -166,11 +176,11 @@ require_once("..\clases/conexion/conexion.php");
                         </div>   
                         <div class="col-sm-6">
                          <div class="row">
-                            <form name="form1" method="POST" action="pro_sel.php">
+                            <form name="form1" method="POST" action="proceso.php">
                               <div class="col-sm-12">
                                     <label>Area:</label>
                                     <select class="form-control" id="area" name="area" required>
-                                    <option value='0'>Todas</option>
+                                    <option value='todas'>Todas</option>
                                     <?php
 									       while($d=mysqli_fetch_array($resultado)){
                                                     echo '<option value='.$d['nombre'].'>'.$d['nombre'].'</option>';
@@ -183,9 +193,9 @@ require_once("..\clases/conexion/conexion.php");
                                   
                               <div class="col-sm-9">
                                   <br>
-                                 <label class="radio-inline"><input type="radio" name="estado">Activos</label>
-                                 <label class="radio-inline"><input type="radio" name="estado">Inactivas</label>
-                                <label class="radio-inline"><input type="radio" name="estado">Ambas</label> 
+                                 <label class="radio-inline"><input type="radio" name="estado" value="1" required>Elegidos</label>
+                                 <label class="radio-inline"><input type="radio" name="estado" value="2"required>No elegidos</label>
+                                <label class="radio-inline"><input type="radio" name="estado" value="3" required>Ambas</label> 
                             </div>
                                   
                             <div class="col-sm-3 ">
@@ -208,19 +218,80 @@ require_once("..\clases/conexion/conexion.php");
         <div class="row" id="tabla_a1">
             <div class="col-sm-12 col-md-12">
                 <br>
-                      
+                    <?php
+                        $sql="SELECT * FROM pregunta";
+                         
+                    if($area<>"todas")
+                          {
+                             if($estado<>"Ambas")
+                             {
+                                 $sql="SELECT * FROM pregunta";
+                             }
+                             else 
+                             {
+                                if($estado==="Activos")
+                                {
+                                  $estado='e';
+                                }
+                                else
+                                {
+                                  $estado='n';
+                                }
+                                $sql="SELECT * FROM pregunta where estado='$estado'";                                 
+                             }
+                              
+                          }
+                        else 
+                        {
+                           if($estado<>"Ambas")
+                             {
+                                 $sql="SELECT * FROM pregunta where area='$area'";
+                             }
+                             else 
+                             {
+                                if($estado=="Activos")
+                                {
+                                  $estado='e';
+                                }
+                                else
+                                {
+                                  $estado='n';
+                                }
+                                $sql="SELECT * FROM pregunta where estado='$estado' and area='$area'";                                 
+                             }
+                        }
+  
+                        ?>
                     <table class="table table-striped table-bordered table-hover table-condensed">
                         <thead>
                             <tr>
-                            <th>CARGO</th>
-                            <th>Cantidad_Total</th>
-                            <th>Acciones</th>
+                            <th>Formulador</th>
+                            <th>Estado</th>
+                            <th>Area</th>
                             <th>VER</th>
                             
                             </tr>
                         </thead>
                             <tbody>
-                                 
+                                <?php
+                                 $query=mysqli_query($conexion,$sql)or die("Error en: $sql: " . mysqli_error());;
+                                 while($d=mysqli_fetch_array($query))
+                                 {
+                                     $id=$d['id_participante'];
+                                     $sql1="select dni,apellido,nombre from participante where id_participante='$id'";
+                                     $consulta=mysqli_query($conexion,$sql1);
+                                     $a=mysqli_fetch_array($consulta);
+                                     $o=$d['estado'];
+                                     if($o<>'e')
+                                        $esta="no elegido";
+                                    else{
+                                        $esta="elegido";
+                                        }
+                                echo '<tr><td>'.$a['dni'].'-'.$a['apellido'].'-'.$a['nombre'].'</td><td>'.$esta.'</td><td>'.$d['area'].'</td><td><a href="ver_perfil.php?id='.$d['id_pregunta'].'" class="btn btn-info"><span class="fa fa-address-book"></span> Ver Pregunta</a></td>';
+                            }
+                       
+                       
+                        ?> 
                             </tbody>
                         </table>
                   

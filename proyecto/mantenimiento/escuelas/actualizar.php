@@ -1,15 +1,28 @@
 <?php
 session_start();
-
 $flag=FALSE;
-
-
-
 require_once("../../clases/conexion/conexion.php");
     $con=$conexion;
-
-
+    if(empty($_GET['id']))
+    {
+        $id=$_SESSION['id'];
+    }
+    else
+    {
+        $id=$_GET["id"];
+    }
+    
+    $sql ="SELECT * FROM escuela WHERE (id_escuela='".$id."')";
+    $consulta = mysqli_query($con,$sql);
+    if ($result=mysqli_fetch_array($consulta))
+    {
+        $area_nombre=$result['area_nombre'];
+        $nombre=$result['nombre'];
+        
+    }
+   
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,7 +42,7 @@ require_once("../../clases/conexion/conexion.php");
     <body class="fixed-left">
 
               <!-- COMIENZO DE PAGINA -->
-        <div id="envoltura">
+               <div id="envoltura">
 
             <!-- COMIENZO DE BARRA TOP -->
             <div class="barra-top">
@@ -72,7 +85,7 @@ require_once("../../clases/conexion/conexion.php");
 
 
 
-                  <div id="menu-barra">
+                    <div id="menu-barra">
                         <ul>
                             <li >
                                 <a href="../../admin.html" ><span> INICIO </span></a>
@@ -117,13 +130,15 @@ require_once("../../clases/conexion/conexion.php");
 
                 </div><!-- contenedor -->
          <div class="container">
-          <form action="clases/crear.php" method="post">
+          <form action="clases/actualizar.php" method="post">
+              
+              
             <div class="row" id="table_re">  <!--TABLA PARA LOS REGISTROS-->
                    <br>
                     <table class="table table-striped table-bordered table-hover table-condensed">
                     <thead>
                     <tr>
-                        <center><h1>INGRESAR NUEVO ADMINISTRATIVO</h1> </center>
+                        <center><h1>Actualizar Administrativo</h1> </center>
 
                     </tr>
                     </thead>
@@ -137,11 +152,11 @@ require_once("../../clases/conexion/conexion.php");
                              
                                 <div class="container">
                                 <div class="table_re">
-                                <table class="table table-striped"> <!--TColumna 1 -->
+                                <table class="table table-striped table-bordered table-hover table-condensed"> <!--TColumna 1 -->
                                 <thead>
                                 <tr>
                                     <br>
-                                    DATOS PERSONALES
+                                    
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -150,25 +165,8 @@ require_once("../../clases/conexion/conexion.php");
                                         <div class="form-group row"> 
                                             <br>
                                             <div class="col-xs-9">
-                                                <label for="dni">DNI :</label>
-                                                <input class="form-control" id="dni" type="text" name="dni" required    >
-                                            </div>
-                                            <div class="col-xs-9">
-                                                <label for="apell">Apellidos :</label>
-                                                <input class="form-control" id="apell" type="text" name="apellido" required >
-                                            </div>
-
-                                            <div class="col-xs-9">
-                                                <label for="nombre">Nombres :</label>
-                                                <input class="form-control" id="nombre" type="text" name="nombre" required >
-                                            </div>
-                                            <div class="col-xs-9">
-                                                <label for="telefono">Telefono :</label>
-                                                <input class="form-control" id="telefono" type="text" name="telefono" >
-                                            </div>
-                                            <div class="col-xs-9">
-                                            <label for="correo">Correo :</label>
-                                            <input class="form-control" id="correo" type="text" name="correo" required  >
+                                                <label for="nom">Nombres :</label>
+                                                <input class="form-control" id="nombre" value="<?php echo $nombre ;?>" name="nom" type="text" required>
                                             </div>
 
                                   <div class="col-xs-12">
@@ -191,7 +189,7 @@ require_once("../../clases/conexion/conexion.php");
                                 <thead>
                                 <tr>
                                     <br>
-                                    DATOS OFICIO
+                                    
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -200,40 +198,34 @@ require_once("../../clases/conexion/conexion.php");
                                      <div class="form-group row">
                                       <br>
                                       <div class="col-xs-9">
-                                        <label for="dependencia">Dependencia :</label>
-                                        <input class="form-control" id="dependencia" type="text" name="dep">
-                                      </div>
-                                      <div class="col-xs-9">
-                                        <label for="cargo">Cargo :</label>
-                                        <select class="form-control" id="sel1" name="participacion">
-                                         <?php
-									       $query=mysqli_query($con,"SELECT * FROM tipo_participacion ");
-									       while($d=mysqli_fetch_array($query)){
+                                                                           <label>Area:</label>
+                                    <select class="form-control" id="area" name="area" required>
+                                    <option value="<?php echo $area_nombre; ?>"><?php echo $area_nombre; ?></option>
+                                    <?php
+                                           $sql="select nombre from area";
+                                           $resultado=mysqli_query($con,$sql);
+									       while($d=mysqli_fetch_array($resultado)){
                                                     echo '<option value='.$d['nombre'].'>'.$d['nombre'].'</option>';
                                             }
-                                          ?>
-                                        
+                                        ?>
+                                    </select>
+                                      </div>                                        
                                         </select>
                                       </div>
-                                      <div class="col-xs-9">
-                                       <label for="categoria">Categoria :</label>
-                                       <input class="form-control" id="ex2" type="text" name="categoria">
-                                      </div>
+                                      
                                          <div class="col-xs-12">
                                             <br>
                                                     <br>
                                             </div>
                                                    
+                                            <div class="col-sm-3 col-md-3">
+                                                <input type="submit" class="btn btn-success" value="Actualizar">
+                                                
+                                                </a>
+                                            
+                                            </div>
                                             <div class="col-sm-6 col-md-6">
-                                                <input type="submit" class="btn btn-success" value="Crear Administrativo">
-                                            </form>
-                                            </div>
-                                          <div class="col-xs-12">
-                                            <br>
-                                                 
-                                            </div>
-                                            <div class="col-sm-12 col-md-12">
-                                                <a href="../administrativos/" class="btn btn-danger ">
+                                                <a href="../escuela" class="btn btn-danger ">
                                                 <span class="fa fa-sign-out"></span> Volver
                                                 </a>
                                             
@@ -261,8 +253,6 @@ require_once("../../clases/conexion/conexion.php");
             </div>
             
             </div>
-            <br>
-
 <?php
 
 if($_SESSION['ejecuto']===TRUE)
@@ -270,12 +260,12 @@ if($_SESSION['ejecuto']===TRUE)
 
 if($flag)
 {
-    echo '<div class="alert alert-success" align="center"><strong>Administrativo creado correctamente</strong></div>' ; 
+    echo '<div class="alert alert-success" align="center"><strong>Exito Administrativo actualizado correctamente !!!</strong></div>' ; 
 }
 
 if($_SESSION['error']===TRUE)
 {
-    echo '<div class="alert alert-danger" align="center"><strong>Administrativo no creado</strong></div>' ;
+    echo '<div class="alert alert-danger" align="center"><strong>Administrativo no actualizado !!! , Posible area_nombre duplicado</strong></div>' ;
 
 }
 
@@ -290,8 +280,7 @@ $_SESSION['error']=FALSE;
 
             <!-- Fin del contenido de la pagina-->
 
-
+     $conexion->desconectar();
         <!-- Fin de la envoltura-->
-
     </body>
 </html>

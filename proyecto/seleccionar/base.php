@@ -1,3 +1,17 @@
+<?php
+//db details
+$dbHost = 'localhost';
+$dbUsername = 'root';
+$dbPassword = '';
+$dbName = 'proyecto';
+
+//Connect and select the database
+$db = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+if ($db->connect_error) {
+    die("Connection failed: " . $db->connect_error);
+}
+/*
 
 <?php
 //Include database configuration file
@@ -24,7 +38,7 @@ if(isset($_POST["nombre"]) && !empty($_POST["nombre"])){
 
 if(isset($_POST["id_escuela"]) && !empty($_POST["id_escuela"])){
     //Get all city data
-    $query = mysqli_query($con,"SELECT * FROM aula WHERE id_escuela = ".$_POST['id_escuela']." ORDER BY n_aula ASC");
+    $query = mysqli_query("SELECT * FROM aula WHERE id_escuela = ".$_POST['id_escuela']." ORDER BY n_aula ASC");
     
     //Count total number of rows
     $rowCount = mysqli_num_fields($query);
@@ -40,3 +54,7 @@ if(isset($_POST["id_escuela"]) && !empty($_POST["id_escuela"])){
     }
 }
 ?>
+*/
+?>
+
+

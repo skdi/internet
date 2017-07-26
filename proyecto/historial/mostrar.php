@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once("..\clases/conexion/conexion.php");
+require_once("../clases/conexion/conexion.php");
     $desde='En seleccion...';
     $hasta='En Seleccion...';
   

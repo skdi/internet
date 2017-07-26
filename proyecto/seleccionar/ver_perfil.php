@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require_once("..\clases/conexion/conexion.php");
+require_once("../clases/conexion/conexion.php");
 require_once("class.php");
 if(empty($_GET['id']))
          $id=$_SESSION['id']; 

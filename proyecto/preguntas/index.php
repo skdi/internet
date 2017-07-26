@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require("..\clases/conexion/conexion.php");
+require("../clases/conexion/conexion.php");
     $_SESSION['id']="0";
     $con=$conexion;
 

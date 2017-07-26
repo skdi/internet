@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("..\clases/conexion/conexion.php");
+require_once("../clases/conexion/conexion.php");
     $_SESSION['id']="0";
     $con=$conexion;
 

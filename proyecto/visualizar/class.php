@@ -3,7 +3,7 @@
 //SELECT COUNT(*) FROM `proceso_participante` inner join (SELECT * from participante where tipo_nombre= "ADMINISTRATIVO" ) as A ON proceso_participante.id_participante= A.id_participante
 
 
-require_once("..\clases/conexion/conexion.php");
+require_once("../clases/conexion/conexion.php");
 $con=$conexion;
 
 class Preguntas

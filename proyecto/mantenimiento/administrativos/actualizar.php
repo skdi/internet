@@ -1,7 +1,7 @@
 <?php
 session_start();
 $flag=FALSE;
-require_once("..\..\clases/conexion/conexion.php");
+require_once("../../clases/conexion/conexion.php");
     $con=$conexion;
     if(empty($_GET['id']))
     {
@@ -124,10 +124,13 @@ require_once("..\..\clases/conexion/conexion.php");
                                 <a href="../../seleccionar"><span> ASIGNAR PERSONAL </span></a>
                             </li>
                             <li>
-                                <a href="../../historial"><span> HISTORIAL GRAFICO</span></a>
+                                <a href="#"><span> IMPORTAR DATOS </span></a>
                             </li>
                             <li>
-                                <a href="../../"><span> SALIR </span></a>
+                                <a href="#"><span> EXPORTAR SELECCION</span></a>
+                            </li>
+                            <li>
+                                <a href="#"><span> SALIR </span></a>
                             </li>
 
                         </ul>

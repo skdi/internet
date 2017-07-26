@@ -93,7 +93,7 @@ require_once("../../clases/conexion/conexion.php");
                                 <a href="#"><span> IMPORTAR DATOS </span></a>
                             </li>
                             <li>
-                                <a href="#"><span> EXPORTAR SELECCION</span></a>
+                                <a href="../../exportar"><span> EXPORTAR SELECCION</span></a>
                             </li>
                             <li>
                                 <a href="#"><span> SALIR </span></a>
@@ -123,7 +123,7 @@ require_once("../../clases/conexion/conexion.php");
                     <table class="table table-striped table-bordered table-hover table-condensed">
                     <thead>
                     <tr>
-                        <center><h1>INGRESAR NUEVO ADMINISTRATIVO</h1> </center>
+                        <center><h1>INGRESAR NUEVA AREA</h1> </center>
 
                     </tr>
                     </thead>
@@ -141,7 +141,7 @@ require_once("../../clases/conexion/conexion.php");
                                 <thead>
                                 <tr>
                                     <br>
-                                    DATOS PERSONALES
+                                    DATOS
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -150,25 +150,8 @@ require_once("../../clases/conexion/conexion.php");
                                         <div class="form-group row"> 
                                             <br>
                                             <div class="col-xs-9">
-                                                <label for="dni">DNI :</label>
-                                                <input class="form-control" id="dni" type="text" name="dni" required    >
-                                            </div>
-                                            <div class="col-xs-9">
-                                                <label for="apell">Apellidos :</label>
-                                                <input class="form-control" id="apell" type="text" name="apellido" required >
-                                            </div>
-
-                                            <div class="col-xs-9">
-                                                <label for="nombre">Nombres :</label>
-                                                <input class="form-control" id="nombre" type="text" name="nombre" required >
-                                            </div>
-                                            <div class="col-xs-9">
-                                                <label for="telefono">Telefono :</label>
-                                                <input class="form-control" id="telefono" type="text" name="telefono" >
-                                            </div>
-                                            <div class="col-xs-9">
-                                            <label for="correo">Correo :</label>
-                                            <input class="form-control" id="correo" type="text" name="correo" required  >
+                                                <label for="dni">NOMBRE :</label>
+                                                <input class="form-control" id="nombre" type="text" name="nombre" required>
                                             </div>
 
                                   <div class="col-xs-12">
@@ -191,41 +174,15 @@ require_once("../../clases/conexion/conexion.php");
                                 <thead>
                                 <tr>
                                     <br>
-                                    DATOS OFICIO
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <th>
                                      <div class="form-group row">
-                                      <br>
-                                      <div class="col-xs-9">
-                                        <label for="dependencia">Dependencia :</label>
-                                        <input class="form-control" id="dependencia" type="text" name="dep">
-                                      </div>
-                                      <div class="col-xs-9">
-                                        <label for="cargo">Cargo :</label>
-                                        <select class="form-control" id="sel1" name="participacion">
-                                         <?php
-									       $query=mysqli_query($con,"SELECT * FROM tipo_participacion ");
-									       while($d=mysqli_fetch_array($query)){
-                                                    echo '<option value='.$d['nombre'].'>'.$d['nombre'].'</option>';
-                                            }
-                                          ?>
-                                        
-                                        </select>
-                                      </div>
-                                      <div class="col-xs-9">
-                                       <label for="categoria">Categoria :</label>
-                                       <input class="form-control" id="ex2" type="text" name="categoria">
-                                      </div>
-                                         <div class="col-xs-12">
-                                            <br>
-                                                    <br>
-                                            </div>
-                                                   
+                                      <br>         
                                             <div class="col-sm-6 col-md-6">
-                                                <input type="submit" class="btn btn-success" value="Crear Administrativo">
+                                                <input type="submit" class="btn btn-success" value="Crear Area">
                                             </form>
                                             </div>
                                           <div class="col-xs-12">
@@ -233,7 +190,7 @@ require_once("../../clases/conexion/conexion.php");
                                                  
                                             </div>
                                             <div class="col-sm-12 col-md-12">
-                                                <a href="../administrativos/" class="btn btn-danger ">
+                                                <a href="../areas/" class="btn btn-danger ">
                                                 <span class="fa fa-sign-out"></span> Volver
                                                 </a>
                                             
@@ -270,12 +227,12 @@ if($_SESSION['ejecuto']===TRUE)
 
 if($flag)
 {
-    echo '<div class="alert alert-success" align="center"><strong>Administrativo creado correctamente</strong></div>' ; 
+    echo '<div class="alert alert-success" align="center"><strong>Area creada correctamente</strong></div>' ; 
 }
 
 if($_SESSION['error']===TRUE)
 {
-    echo '<div class="alert alert-danger" align="center"><strong>Administrativo no creado</strong></div>' ;
+    echo '<div class="alert alert-danger" align="center"><strong>Area no creada</strong></div>' ;
 
 }
 

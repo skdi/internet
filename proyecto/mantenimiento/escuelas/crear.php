@@ -72,7 +72,7 @@ require_once("../../clases/conexion/conexion.php");
 
 
 
-                  <div id="menu-barra">
+                    <div id="menu-barra">
                         <ul>
                             <li >
                                 <a href="../../admin.html" ><span> INICIO </span></a>
@@ -101,7 +101,6 @@ require_once("../../clases/conexion/conexion.php");
 
                         </ul>
                     </div>
-                  
                     <div class="clearfix"></div>
                 </div> <!-- MENU INTERIOR -->
             </div>
@@ -123,7 +122,7 @@ require_once("../../clases/conexion/conexion.php");
                     <table class="table table-striped table-bordered table-hover table-condensed">
                     <thead>
                     <tr>
-                        <center><h1>INGRESAR NUEVO ADMINISTRATIVO</h1> </center>
+                        <center><h1>INGRESAR NUEVA ESCUELA</h1> </center>
 
                     </tr>
                     </thead>
@@ -137,11 +136,11 @@ require_once("../../clases/conexion/conexion.php");
                              
                                 <div class="container">
                                 <div class="table_re">
-                                <table class="table table-striped"> <!--TColumna 1 -->
+                                <table class="table table-striped table-bordered table-hover table-condensed"> <!--TColumna 1 -->
                                 <thead>
                                 <tr>
                                     <br>
-                                    DATOS PERSONALES
+                                    DATOS
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -150,25 +149,8 @@ require_once("../../clases/conexion/conexion.php");
                                         <div class="form-group row"> 
                                             <br>
                                             <div class="col-xs-9">
-                                                <label for="dni">DNI :</label>
-                                                <input class="form-control" id="dni" type="text" name="dni" required    >
-                                            </div>
-                                            <div class="col-xs-9">
-                                                <label for="apell">Apellidos :</label>
-                                                <input class="form-control" id="apell" type="text" name="apellido" required >
-                                            </div>
-
-                                            <div class="col-xs-9">
                                                 <label for="nombre">Nombres :</label>
                                                 <input class="form-control" id="nombre" type="text" name="nombre" required >
-                                            </div>
-                                            <div class="col-xs-9">
-                                                <label for="telefono">Telefono :</label>
-                                                <input class="form-control" id="telefono" type="text" name="telefono" >
-                                            </div>
-                                            <div class="col-xs-9">
-                                            <label for="correo">Correo :</label>
-                                            <input class="form-control" id="correo" type="text" name="correo" required  >
                                             </div>
 
                                   <div class="col-xs-12">
@@ -191,7 +173,7 @@ require_once("../../clases/conexion/conexion.php");
                                 <thead>
                                 <tr>
                                     <br>
-                                    DATOS OFICIO
+                                    DATOS PARTICULARES
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -199,41 +181,34 @@ require_once("../../clases/conexion/conexion.php");
                                     <th>
                                      <div class="form-group row">
                                       <br>
-                                      <div class="col-xs-9">
-                                        <label for="dependencia">Dependencia :</label>
-                                        <input class="form-control" id="dependencia" type="text" name="dep">
-                                      </div>
-                                      <div class="col-xs-9">
-                                        <label for="cargo">Cargo :</label>
-                                        <select class="form-control" id="sel1" name="participacion">
-                                         <?php
-									       $query=mysqli_query($con,"SELECT * FROM tipo_participacion ");
-									       while($d=mysqli_fetch_array($query)){
+                                      <div class="col-sm-12">
+                                    <label>Area:</label>
+                                    <select class="form-control" id="area" name="area" required>
+                                    <?php
+                                           $sql="select nombre from area";
+                                           $resultado=mysqli_query($con,$sql);
+									       while($d=mysqli_fetch_array($resultado)){
                                                     echo '<option value='.$d['nombre'].'>'.$d['nombre'].'</option>';
                                             }
-                                          ?>
-                                        
-                                        </select>
-                                      </div>
-                                      <div class="col-xs-9">
-                                       <label for="categoria">Categoria :</label>
-                                       <input class="form-control" id="ex2" type="text" name="categoria">
-                                      </div>
+                                        ?>
+                                    </select>
+                                </div>
                                          <div class="col-xs-12">
-                                            <br>
+                                            <br> 
                                                     <br>
                                             </div>
-                                                   
+                                           
                                             <div class="col-sm-6 col-md-6">
-                                                <input type="submit" class="btn btn-success" value="Crear Administrativo">
-                                            </form>
-                                            </div>
-                                          <div class="col-xs-12">
+                                                <input type="submit" class="btn btn-success" value="Subir Escuela">
+                                                
+                                                </a>
+                                            
+                                            </div><div class="col-xs-12">
                                             <br>
                                                  
                                             </div>
                                             <div class="col-sm-12 col-md-12">
-                                                <a href="../administrativos/" class="btn btn-danger ">
+                                                <a href="../escuelas/" class="btn btn-danger ">
                                                 <span class="fa fa-sign-out"></span> Volver
                                                 </a>
                                             
@@ -270,12 +245,12 @@ if($_SESSION['ejecuto']===TRUE)
 
 if($flag)
 {
-    echo '<div class="alert alert-success" align="center"><strong>Administrativo creado correctamente</strong></div>' ; 
+    echo '<div class="alert alert-success" align="center"><strong>Escuela creada correctamente</strong></div>' ; 
 }
 
 if($_SESSION['error']===TRUE)
 {
-    echo '<div class="alert alert-danger" align="center"><strong>Administrativo no creado</strong></div>' ;
+    echo '<div class="alert alert-danger" align="center"><strong>Escuela no creado</strong></div>' ;
 
 }
 

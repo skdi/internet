@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once("..\clases/conexion/conexion.php");
+require_once("../clases/conexion/conexion.php");
     if(empty($_GET['id']))
          $id=$_SESSION['id']; 
     else
@@ -218,8 +218,8 @@ require_once("..\clases/conexion/conexion.php");
                               
                           </thead>
                           <tbody>
-                            <td><center><label class="radio-inline"><input type="radio" value="e" name="estado">Elegido</label>
-                                 <label class="radio-inline"><input type="radio" value="n" name="estado">No Elegido</label>
+                            <td><center><label class="radio-inline"><input type="radio" value="e" name="estado" required>Elegido</label>
+                                 <label class="radio-inline"><input type="radio" value="n" name="estado" required>No Elegido</label>
                         </tbody>
                         </table>
                 </div>
@@ -232,9 +232,9 @@ require_once("..\clases/conexion/conexion.php");
                               
                           </thead>
                           <tbody>
-                            <td><center><label class="radio-inline"><input type="radio" value="Ingenierias" name="area">Ingenierias</label>
-                                 <label class="radio-inline"><input type="radio" value="Biomedicas" name="area">Biomedicas</label>
-                                <label class="radio-inline"><input type="radio" value="Sociales" name="area">Sociales</label></center></td>
+                            <td><center><label class="radio-inline"><input type="radio" value="Ingenierias" name="area" required>Ingenierias</label>
+                                 <label class="radio-inline"><input type="radio" value="Biomedicas" name="area" required >Biomedicas</label>
+                                <label class="radio-inline"><input type="radio" value="Sociales" name="area" required >Sociales</label></center></td>
 
                         </tbody>
                         </table>
@@ -251,7 +251,7 @@ require_once("..\clases/conexion/conexion.php");
                               
                           </thead>
                           <tbody>
-                            <td><textarea name="enunciado" class="form-control" rows="3"></textarea></td>
+                            <td><textarea name="enunciado" class="form-control" rows="3" required></textarea></td>
 
                         </tbody>
                         </table>
