@@ -8,57 +8,139 @@
 	echo '<h1 align=center>Welcome :'.$_SESSION["user"].'</h1>';
 ?>
 <!DOCTYPE html>
-<html lang="es">
-	<head>
-		<meta name="viewport" content="width-device-width,use-scalable-no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
-		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
-		<script src="js/jquery-3.2.1.js" charset="utf-8"></script>
-		<script src="bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>SISTEMA DE PROCESOS DE ADMISION</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="css/icons.css" rel="stylesheet" type="text/css">
+        <link href="css/style.css" rel="stylesheet" type="text/css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-		<title>Pagina del postulante</title>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="estilos.css">
-		<style type="text/css">
-			#caja{
-				background:#CACACA;
-				width:200px;
-				border:1px solid white;
-				margin :auto 83%;
-				padding:0em;
-				border-radius:0px;
-			}
-			#registro{
-				background:#CACACA;
-				width:200px;
-				border:1px solid white;
-				margin :auto 83%;
-				padding:0em;
-				border-radius:0px;
-			}
-			h1,h2,h3,h4{
-				front-family:arial;
-				color:#000;
-			}
-		</style>
-		
-		</head>
-	  <body>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3 col-md-offset-4">
-				<form method="post">
-					</div>
-					<div class="form-group">
-						  <input type="button" name="logut" id="logout" value="Logout" class="btn btn-success" onclick=" location.href='logout.php'">
-					</div>
-					<br>
-				</form>
-				</div>
-			</div>
-		</div>
-	</body>
+    </head>
 
-</html>	
+
+    <body class="fixed-left">
+
+        <!-- COMIENZO DE PAGINA -->
+        <div id="envoltura">
+
+            <!-- COMIENZO DE BARRA TOP -->
+            <div class="barra-top">
+                <!-- LOGO -->
+                <div class="barra-top-izquierda">
+
+                    <a href="index.html" class="logo">MENU</a>
+                </div>
+                
+                
+            </div>
+            <!-- Barra top fin -->
+
+
+            <!-- ========== MENU Izquierda ========== -->
+
+            <div class="izq menu-lateral">
+                <div class="menu-dentro slimscrollleft">
+
+                   
+                    <div class="detalles-usuario">
+                        <div class="text-center">
+                            <img src="img/admin.jpg" alt="" class="img-circle">
+                        </div>
+                        <div class="info-usuario">  
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">ADMINISTRADOR <span class="glyphicon glyphicon-menu-down"></span></a>
+                               
+                                <ul class="dropdown-menu">
+                                    <li><a href=""> Perfil</a></li>
+                                    <li><a href=""> Configuracion   </a></li>
+                                    <li class="divider"></li>
+                                    <li><a href=""> Cerrar Sesion</a></li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!--- DIVISOR -->
+
+
+                    <div id="menu-barra">
+                        <ul>
+                            <li class="activado">
+                                <a href="index.html" ><span> INICIO </span></a>
+                            </li>
+                            <li>
+                                <a href="mantenimiento/" ><span> MANTENIMIENTO </span></a>
+                            </li>
+                            <li>
+                                <a href="visualizar/"><span> VISUALIZAR </span></a>
+                            </li>
+                            <li>
+                                <a href="preguntas/"><span> REGISTRAR PREGUNTAS</span></a>
+                            </li>
+                            <li>
+                                <a href="seleccionar/"><span> ASIGNAR PERSONAL </span></a>
+                            </li>
+                            <li>
+                                <a href="#"><span> IMPORTAR DATOS </span></a>
+                            </li>
+                            <li>
+                                <a href="#"><span> EXPORTAR SELECCION</span></a>
+                            </li>
+                            <li>
+                                <a href="index."><span> SALIR </span></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                  
+                    <div class="clearfix"></div>
+                </div> <!-- MENU INTERIOR -->
+            </div>
+            <!-- MENU IZQUIERDA -->
+
+            <!-- CONTENIDO AQUI -->
+
+            <div class="pagina-contenido">
+                <!-- Contenido -->
+                <div class="contenido">
+
+                    <div class="">
+                        <div class="cabecera-titulo">
+                          <center><img src="img/logo_unsayfacultad.png">  </center> 
+                            <h2 class="titulo-pagina">SISTEMA SELECCION DE PERSONAL DE PROCESOS DE ADMISION</h2>
+                        </div>
+                    </div>
+
+                    <div class="page-content-wrapper ">
+
+                        <div class="container">
+                      
+                        </div><!-- contenedor -->
+
+
+                    </div> <!-- pagina contenido envoltura -->
+
+                </div> <!-- contenido -->
+
+                <footer class="footer">
+                     © 2017 UNIVERSIDAD NACIONAL DE SAN AGUSTIN
+                </footer>
+
+            </div>
+            <!-- Fin del contenido de la pagina-->
+
+        </div>
+        <!-- Fin de la envoltura-->
+    </body>
+</html>
+
 <!--
 <!DOCTYPE html>
 <html lang="es">
