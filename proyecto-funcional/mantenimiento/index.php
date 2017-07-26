@@ -126,6 +126,13 @@
                                         
                                     </a>
                                 </div>
+                        <div class="col-sm-6 col-md-6">
+                                <a href="escuelas/" class="thumbnail">
+                                    <center><h3>Escuelas</h3>     </center>
+                                    <img src="img/escuelas.jpg" alt="..." class="img-rounded">
+                                        
+                                </a>
+                         </div>
                         
                     </div>
                     
