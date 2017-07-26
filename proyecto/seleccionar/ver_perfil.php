@@ -112,17 +112,58 @@ if(empty($_GET['id']))
 ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>SISTEMA DE PROCESOS DE ADMISION</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link href="css/style.css" rel="stylesheet" type="text/css">
-
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>SISTEMA DE PROCESOS DE ADMISION</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script> 
+<script src="js/jquery.min.js"></script>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+    
+$(document).ready(function(){
+    $('#area').on('change',function(){
+        var areaID = $(this).val();
+        if(areaID){
+            $.ajax({
+                type:'POST',
+                url:'columnas.php',
+                data:'nombre='+areaID,
+                success:function(html){
+                    $('#escuela').html(html);
+                    $('#aula').html('<option value="">Seleccion area primero</option>'); 
+                }
+            }); 
+        }else{
+            $('#escuela').html('<option value="">Selecciona area primero</option>');
+            $('#aula').html('<option value="">Selecciona escuela primero</option>'); 
+        }
+    });
+    
+    $('#escuela').on('change',function(){
+        var escuelaID = $(this).val();
+        if(escuelaID){
+            $.ajax({
+                type:'POST',
+                url:'columnas.php',
+                data:'id_escuela='+escuelaID,
+                success:function(html){
+                    $('#aula').html(html);
+                }
+            }); 
+        }else{
+            $('#aula').html('<option value="">Selecciona area primero</option>'); 
+        }
+    });
+});
+</script>
     </head>
 
 
@@ -246,6 +287,9 @@ if(empty($_GET['id']))
                  
         ?>
         <div class="row" id="detalle">
+            <form id="general" action="ver_perfil.php" method="post">
+                <input type="hidden"  name="id_participante" value="<?php echo $id_participante ?>">
+                <input type="hidden"  name="fu" value="<?php echo $fu ?>">
                     <div class="col-sm-12">
                     <div class="form-group row"> 
                     <div class="col-xs-6">
@@ -258,17 +302,14 @@ if(empty($_GET['id']))
                         <label for="apll">Dni:</label>
                         <input class="form-control" id="apll"  value="<?php echo $dni; ?>" name="dni" type="text"  readonly>
                     </div> 
-                    
-                     
+
                     <div class="col-xs-3">
                         <label for="apll">Estado</label>
                         <input class="form-control" id="apll"  value="<?php echo $estado; ?>" name="apll" type="text"  readonly>
                     </div>
-                  <form id="area" action="ver_perfil.php" method="post">
+
                     <div class="col-xs-3">
                        <label for="area">Area :</label>
-                        <input type="hidden"  name="id_participante" value="<?php echo $id_participante ?>">
-                        <input type="hidden"  name="fu" value="<?php echo $fu ?>">
                         <select class="form-control" id="area" name="area" required>
                             <option value='<?php echo $area; ?>'><?php echo $area; ?></option>
                             <?php
@@ -278,13 +319,7 @@ if(empty($_GET['id']))
                                           ?>
                         </select>
                     </div>
-                    <div class="col-xs-3">
-                        <br>
-                        <input type="submit" class="btn btn-danger" value="GENERAR AREA">
-                    </div>
-
-                    </form>     
-                 <div class="col-xs-12"></div>
+                    <div class="col-xs-12"></div>
                     
                     <div class="col-xs-3">
                         <label for="telf">Correo:</label>
@@ -299,60 +334,34 @@ if(empty($_GET['id']))
                         if($fu==='controlador' or $fu==='tecnico' or $fu==='conserje' or $fu==='controlador_puerta')
                         {               
                         ?>
-                        <form id="escuela" action="ver_perfil.php" method="post">
-                            <input type="hidden"  name="id_participante" value="<?php echo $id_participante ?>">
-                            <input type="hidden"  name="fu" value="<?php echo $fu ?>">
-                            <input type="hidden"  name="area" value="<?php echo $area ?>">
                             <div class="col-xs-3">
                                 <label for="escuela">Escuela:</label>
-                               
-                                <select class="form-control" id="escuela" name="escuela" >
-                                     <option value='<?php echo $escuela;?>'><?php echo $nombre_escuela;?></option>
-                                    <?php 
-
-                                        while($e=mysqli_fetch_array($resultado1))
-                                            {
-                                               echo '<option value='.$e['id_escuela'].'>'.$e['nombre'].'</option>';
-                                            }
-                                        
-                                    ?>
+                                <select class="form-control" name="escuela" id="escuela">
+                                        <option value="">Selecciona area primero</option>
                                 </select>
+                                 
                             </div>
-                            <div class="col-xs-3">
-                                <br>
-                                <input type="submit" class="btn btn-danger" value="GENERAR ESCUELA">
-                            </div>
-                        </form>
                         <?php }
                         if($fu==="controlador" or $fu==="tecnico" )
                         { ?>
                         <div class="col-xs-12"></div>
                         <div class="col-xs-6"></div>
-                        <form id="aula" action="ver_perfil.php" method="post">
-                            <input type="hidden"  name="id_participante" value="<?php echo $id_participante ?>">
-                            <input type="hidden"  name="fu" value="<?php echo $fu ?>">
-                            <input type="hidden"  name="area" value="<?php echo $area ?>">
-                            <input type="hidden"  name="escuela" value="<?php echo $escuela ?>">
+                        
+                            
                             <div class="col-xs-3">
                                 <label for="aula">Aula:</label>
-                               
-                                <select class="form-control" id="aula" name="aula" >
-                                     <option value='<?php echo $aula;?>'><?php echo $nombre_aula;?></option>
-                                    <?php 
-
-                                        while($c=mysqli_fetch_array($resultado2))
-                                            {
-                                               echo '<option value='.$c['id_aula'].'>'.$c['n_aula'].'</option>';
-                                            }
-                                    ?>
+                                <select name="aula" class="form-control" id="aula">
+                                    <option value="">Selecciona escuela primero</option>
                                 </select>
                             </div>
-                             <div class="col-xs-3">
+                             
+                        
+                        <?php } ?>
+                        <div class="col-xs-3">
                                 <br>
-                                <input type="submit" class="btn btn-danger" value="GENERAR AULA">
+                                <input type="submit" class="btn btn-danger" value="GENERAR ASIGNACION">
                             </div>
                         </form>
-                        <?php } ?>
             </div>
             <div class="col-sm-12">
             <form id="registrar" action="registrar.php" method="post">
