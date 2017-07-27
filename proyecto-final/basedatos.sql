@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-07-2017 a las 04:53:13
+-- Tiempo de generación: 27-07-2017 a las 10:32:20
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.5.35
 
@@ -327,18 +327,20 @@ INSERT INTO `tipo_participante` (`nombre`) VALUES
 
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
+  `user` varchar(50) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
   `correo` varchar(50) NOT NULL,
-  `pass` varchar(50) NOT NULL
+  `pass` varchar(50) NOT NULL,
+  `pregunta` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`id_usuario`, `nombre`, `apellido`, `correo`, `pass`) VALUES
-(1213, 'dui', 'dui', '@dui', 'dui');
+INSERT INTO `usuario` (`id_usuario`, `user`, `nombre`, `apellido`, `correo`, `pass`, `pregunta`) VALUES
+(1, 'andre1', 'andre', 'mogrovejo', 'andre@gmail.com', '12345', 'scoby');
 
 --
 -- Índices para tablas volcadas
@@ -420,12 +422,6 @@ ALTER TABLE `tipo_participante`
   ADD PRIMARY KEY (`nombre`);
 
 --
--- Indices de la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id_usuario`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -443,7 +439,7 @@ ALTER TABLE `detalle_participante`
 -- AUTO_INCREMENT de la tabla `escuela`
 --
 ALTER TABLE `escuela`
-  MODIFY `id_escuela` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_escuela` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `participante`
 --
@@ -453,12 +449,12 @@ ALTER TABLE `participante`
 -- AUTO_INCREMENT de la tabla `pregunta`
 --
 ALTER TABLE `pregunta`
-  MODIFY `id_pregunta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_pregunta` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `proceso`
 --
 ALTER TABLE `proceso`
-  MODIFY `id_proceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_proceso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `proceso_participante`
 --
