@@ -72,13 +72,13 @@
 
                     <div id="menu-barra">
                         <ul>
-                            <li class="activado">
-                                <a href="index.html" ><span> INICIO </span></a>
+                            <li class="activado" >
+                                <a href="index.php" ><span> INICIO </span></a>
                             </li>
                             <li>
                                 <a href="mantenimiento/" ><span> MANTENIMIENTO </span></a>
                             </li>
-                            <li>
+                            <li  >
                                 <a href="visualizar/"><span> VISUALIZAR </span></a>
                             </li>
                             <li>
@@ -88,13 +88,10 @@
                                 <a href="seleccionar/"><span> ASIGNAR PERSONAL </span></a>
                             </li>
                             <li>
-                                <a href="#"><span> IMPORTAR DATOS </span></a>
+                                <a href="historial/"><span> HISTORIAL GRAFICO</span></a>
                             </li>
                             <li>
-                                <a href="#"><span> EXPORTAR SELECCION</span></a>
-                            </li>
-                            <li>
-                                <a href="logout.php"><span> SALIR </span></a>
+                                 <a href="logout.php"><span> SALIR </span></a>
                             </li>
 
                         </ul>
